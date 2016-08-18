@@ -1,6 +1,5 @@
 <?php
 require_once 'koneksi.php';
-session_start();
 if(isset($_SESSION['username']) && isset($_SESSION['login'])) {
 
 } else if(isset($_POST['submit']) && isset($_POST['username']) && isset($_POST['password'])) {
