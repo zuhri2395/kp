@@ -10,8 +10,8 @@
 <div class="templatemo-content-wrapper">
 	<div class="templatemo-content">
 		<ol class="breadcrumb">
-			<li><a href="../index.php">Dashboard</a></li>
-			<li><a href="#">SPT</a></li>
+			<li><a href="index.php">Dashboard</a></li>
+			<li><a href="index.php?posisi=spt&type=insert">SPT</a></li>
 			<li>Input SPT</li>
 		</ol>
 		<h1>

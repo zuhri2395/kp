@@ -30,10 +30,10 @@
 <div class="template-page-wrapper">
     <div class="navbar-collapse collapse templatemo-sidebar">
         <ul class="templatemo-sidebar-menu">
-            <li class="active"><a href="index.php"><i class="fa fa-home"></i>Dashboard</a></li>
+            <li id="dashboard"><a href="index.php"><i class="fa fa-home"></i>Dashboard</a></li>
 
             <!-- Menu Jadwal Penugasan -->
-            <li class="sub open">
+            <li class="sub" id="penugasan">
                 <a href="javascript:;">
                     <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Jadwal Penugasan
                     <div class="pull-right"><span class="caret"></span></div>
@@ -45,7 +45,7 @@
             </li>
 
             <!-- Menu Surat Perintah Tugas -->
-            <li class="sub">
+            <li class="sub" id="spt">
                 <a href="javascript:;">
                     <i class="fa fa-car" aria-hidden="true"></i> Surat Perintah Tugas
                     <div class="pull-right"><span class="caret"></span></div>
@@ -57,7 +57,7 @@
             </li>
 
             <!-- Menu Surat Perintah Perjalanan Dinas -->
-            <li class="sub">
+            <li class="sub" id="sppd">
                 <a href="javascript:;">
                     <i class="fa fa-map-marker" aria-hidden="true"></i> Surat Perintah Perjalanan Dinas
                     <div class="pull-right"><span class="caret"></span></div>
@@ -69,7 +69,7 @@
             </li>
 
             <!-- Menu SBP, Pegawai, Rekening, SRB, dll -->
-            <li class="sub">
+            <li class="sub" id="lainnya">
                 <a href="javascript:;">
                     <i class="fa fa-tasks" aria-hidden="true"></i> Lainnya
                     <div class="pull-right"><span class="caret"></span></div>
@@ -84,8 +84,8 @@
                     <li><a href="#">Rekening</a></li>
                 </ul>
             </li>
-            <li><a href="tables.html"><i class="fa fa-users"></i>Manage Users</a></li>
-            <li><a href="preferences.html"><i class="fa fa-cog"></i>Preferences</a></li>
+            <li id="users"><a href="tables.html"><i class="fa fa-users"></i>Manage Users</a></li>
+            <li id="pref"><a href="preferences.html"><i class="fa fa-cog"></i>Preferences</a></li>
             <li><a href="#" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign Out</a>
             </li>
         </ul>
@@ -94,35 +94,90 @@
     <?php
       if(!isset($_GET['posisi'])) {
         require_once 'overview.php';
-      } else if(($_GET['posisi'] == "spt") || (!isset($_GET['type']))) {
-        require_once 'input/inputSPT.php';
       }
+      /* SPT */
+      else if(($_GET['posisi'] == "spt") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" ||(!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nospt']))))) {
+        require_once 'view/spt.php';
+      } else if(($_GET['posisi'] == "spt") && ($_GET['type'] == "insert")) {
+        require_once 'input/spt.php';
+      } else if(($_GET['posisi'] == "spt") && ($_GET['type'] == "edit") && (isset($_GET['nospt']))) {
+        require_once 'edit/spt.php';
+      }
+
+      /* SPPD */
+      else if(($_GET['posisi'] == "sppd") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nosppd']))))) {
+        require_once 'view/sppd.php';
+      } else if(($_GET['posisi'] == "sppd") && ($_GET['type'] == "insert")) {
+        require_once 'input/sppd.php';
+      } else if(($_GET['posisi'] == "sppd") && ($_GET['type'] == "edit") && (isset($_GET['nosppd']))) {
+        require_once 'edit/sppd.php';
+      }
+
+      /* RINCIAN BIAYA */
+      else if(($_GET['posisi'] == "rincianbiaya") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['norincian']))))) {
+        require_once 'view/rincianbiaya.php';
+      } else if(($_GET['posisi'] == "rincianbiaya") && ($_GET['type'] == "insert")) {
+        require_once 'input/rincianbiaya.php';
+      } else if(($_GET['posisi'] == "rincianbiaya") && ($_GET['type'] == "edit") && (isset($_GET['norincian']))) {
+        require_once 'edit/rincianbiaya.php';
+      }
+
+      /* BUKTI PENGELUARAN */
+      else if(($_GET['posisi'] == "buktipengeluaran") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nobuktipengeluaran']))))) {
+        require_once 'view/buktipengeluaran.php';
+      } else if(($_GET['posisi'] == "buktipengeluaran") && ($_GET['type'] == "insert")) {
+        require_once 'input/buktipengeluaran.php';
+      } else if(($_GET['posisi'] == "buktipengeluaran") && ($_GET['type'] == "edit") && (isset($_GET['nobuktipengeluaran']))) {
+        require_once 'edit/buktipengeluaran.php';
+      }
+
+      /* REKENING */
+      else if(($_GET['posisi'] == "rekening") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['norekening']))))) {
+        require_once 'view/rekening.php';
+      } else if(($_GET['posisi'] == "rekening") && ($_GET['type'] == "insert")) {
+        require_once 'input/rekening.php';
+      } else if(($_GET['posisi'] == "rekening") && ($_GET['type'] == "edit") && (isset($_GET['norekening']))) {
+        require_once 'edit/rekening.php';
+      }
+
+      /* PERATURAN GUBERNUR */
+      else if(($_GET['posisi'] == "pergub") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nopergub']))))) {
+        require_once 'view/pergub.php';
+      } else if(($_GET['posisi'] == "pergub") && ($_GET['type'] == "insert")) {
+        require_once 'input/pergub.php';
+      } else if(($_GET['posisi'] == "pergub") && ($_GET['type'] == "edit") && (isset($_GET['nopergub']))) {
+        require_once 'edit/pergub.php';
+      }
+
+      /* DPA */
+      else if(($_GET['posisi'] == "dpa") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nodpa']))))) {
+        require_once 'view/dpa.php';
+      } else if(($_GET['posisi'] == "dpa") && ($_GET['type'] == "insert")) {
+        require_once 'input/dpa.php';
+      } else if(($_GET['posisi'] == "dpa") && ($_GET['type'] == "edit") && (isset($_GET['nodpa']))) {
+        require_once 'edit/dpa.php';
+      }
+
+      /* SPD */
+      else if(($_GET['posisi'] == "spd") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nospd']))))) {
+        require_once 'view/spd.php';
+      } else if(($_GET['posisi'] == "spd") && ($_GET['type'] == "insert")) {
+        require_once 'input/spd.php';
+      } else if(($_GET['posisi'] == "spd") && ($_GET['type'] == "edit") && (isset($_GET['nospd']))) {
+        require_once 'edit/spd.php';
+      }
+
+      /* PEGAWAI */
+      else if(($_GET['posisi'] == "pegawai") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nip']))))) {
+        require_once 'view/pegawai.php';
+      } else if(($_GET['posisi'] == "pegawai") && ($_GET['type'] == "insert")) {
+        require_once 'input/pegawai.php';
+      } else if(($_GET['posisi'] == "pegawai") && ($_GET['type'] == "edit") && (isset($_GET['nip']))) {
+        require_once 'edit/pegawai.php';
+      }
+
     ?>
 
-    <!-- <div class="templatemo-content-wrapper">
-        <div class="templatemo-content">
-            <ol class="breadcrumb">
-                <li class="active">Dashboard</li>
-            </ol>
-            <h1>Dashboard</h1>
-            <p>Dashboard is free admin template for everyone. Credits go to <a href="http://chartjs.org">Chart JS</a>,
-                <a href="http://getbootstrap.com">Bootstrap</a>, and <a href="http://jqvmap.com">JQVMap</a>. templatemo
-                provides <a href="#">free website templates</a> that can be used for any purpose. Morbi id nisi enim. Ut
-                congue interdum pharetra facilisi. Aenean consectetur pellentesque mauris nec ornare. Nam tortor just,
-                condimentum.</p>
-
-            <div class="templatemo-panels">
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 margin-bottom-30">
-                        <div class="panel panel-success">
-                            <div class="panel-heading">Surat Perintah Tugas</div>
-                            <canvas id="templatemo-line-chart" height="120" width="500"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <!-- Modal -->
     <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
          aria-hidden="true">
@@ -151,32 +206,14 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/Chart.min.js"></script>
 <script src="js/templatemo_script.js"></script>
-<!-- <script type="text/javascript">
-    // Line chart
-    var randomScalingFactor = function () {
-        return Math.round(Math.random() * 100)
-    };
-    var lineChartData = {
-        labels: ["January", "February", "March", "April", "May", "June", "July"],
-        datasets: [
-            {
-                label: "My Second dataset",
-                fillColor: "rgba(151,187,205,0.2)",
-                strokeColor: "rgba(151,187,205,1)",
-                pointColor: "rgba(151,187,205,1)",
-                pointStrokeColor: "#fff",
-                pointHighlightFill: "#fff",
-                pointHighlightStroke: "rgba(151,187,205,1)",
-                data: [randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor(), randomScalingFactor()]
-            }]
-    }
-
-    window.onload = function () {
-        var ctx_line = document.getElementById("templatemo-line-chart").getContext("2d");
-        window.myLine = new Chart(ctx_line).Line(lineChartData, {
-            responsive: true
-        });
-    };
-</script> -->
+<script type="text/javascript">
+  var type = "<?php echo (isset($_GET['posisi']) ? $_GET['posisi'] : false) ?>"
+  if(type == false) {
+    $('#dashboard').addClass("active");
+  } else {
+    $('#' + type).addClass("open");
+    $('#' + type).addClass("active");
+  }
+</script>
 </body>
 </html>
