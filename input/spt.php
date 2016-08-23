@@ -11,8 +11,8 @@
 	<div class="templatemo-content">
 		<ol class="breadcrumb">
 			<li><a href="index.php">Dashboard</a></li>
-			<li><a href="index.php?posisi=spt&type=insert">SPT</a></li>
-			<li>Input SPT</li>
+			<li><a href="index.php?posisi=spt">SPT</a></li>
+			<li class="active">Input SPT</li>
 		</ol>
 		<h1>
 			<b>Surat Perintah Tugas</b>
@@ -156,6 +156,14 @@
 							</select>
 						</div>
 					</div>
+
+					<div class="row">
+						<div class="col-md-12 margin-bottom-15">
+							<input type="submit" name="submit" value="Simpan" class="btn btn-primary">
+							<input type="reset" name="reset" value="Reset" class="btn btn-default">
+						</div>
+					</div>
+					
 				</form>
 			</div>
 		</div>
