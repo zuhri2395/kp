@@ -8,6 +8,11 @@
     <meta name="description" content=""/>
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="css/templatemo_main.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/Chart.min.js"></script>
+    <script src="js/jquery-ui.min.js"></script>
 
     <!--
     Dashboard Template
@@ -33,14 +38,14 @@
             <li id="dashboard"><a href="index.php"><i class="fa fa-home"></i>Dashboard</a></li>
 
             <!-- Menu Jadwal Penugasan -->
-            <li class="sub" id="penugasan">
+            <li class="sub" id="jadwal">
                 <a href="javascript:;">
                     <i class="fa fa-calendar-check-o" aria-hidden="true"></i> Jadwal Penugasan
                     <div class="pull-right"><span class="caret"></span></div>
                 </a>
                 <ul class="templatemo-submenu">
-                    <li><a href="#">Lihat</a></li>
-                    <li><a href="#">Input</a></li>
+                    <li><a href="index.php?posisi=jadwal">Lihat</a></li>
+                    <li><a href="index.php?posisi=jadwal&type=insert">Input</a></li>
                 </ul>
             </li>
 
@@ -51,8 +56,8 @@
                     <div class="pull-right"><span class="caret"></span></div>
                 </a>
                 <ul class="templatemo-submenu">
-                    <li><a href="index.php?posisi=spt&type=view">Lihat</a></li>
-                    <li><a href="#">Input</a></li>
+                    <li><a href="index.php?posisi=spt">Lihat</a></li>
+                    <li><a href="index.php?posisi=spt&type=insert">Input</a></li>
                 </ul>
             </li>
 
@@ -63,8 +68,8 @@
                     <div class="pull-right"><span class="caret"></span></div>
                 </a>
                 <ul class="templatemo-submenu">
-                    <li><a href="#">Lihat</a></li>
-                    <li><a href="#">Input</a></li>
+                    <li><a href="index.php?posisi=sppd">Lihat</a></li>
+                    <li><a href="index.php?posisi=sppd&type=insert">Input</a></li>
                 </ul>
             </li>
 
@@ -75,13 +80,13 @@
                     <div class="pull-right"><span class="caret"></span></div>
                 </a>
                 <ul class="templatemo-submenu">
-                    <li><a href="#">Rincian Biaya</a></li>
-                    <li><a href="#">Biaya Perjalanan</a></li>
-                    <li><a href="#">Peraturan Gubernur</a></li>
-                    <li><a href="#">Dokumen Pelaksana Anggaran</a></li>
-                    <li><a href="#">Surat Penyedia Anggaran</a></li>
-                    <li><a href="#">Pegawai</a></li>
-                    <li><a href="#">Rekening</a></li>
+                    <li><a href="index.php?posisi=rincianbiaya">Rincian Biaya</a></li>
+                    <li><a href="index.php?posisi=buktipengeluaran">Bukti Pengeluaran</a></li>
+                    <li><a href="index.php?posisi=pergub">Peraturan Gubernur</a></li>
+                    <li><a href="index.php?posisi=dpa">Dokumen Pelaksana Anggaran</a></li>
+                    <li><a href="index.php?posisi=spd">Surat Penyedia Anggaran</a></li>
+                    <li><a href="index.php?posisi=pegawai">Pegawai</a></li>
+                    <li><a href="index.php?posisi=rekening">Rekening</a></li>
                 </ul>
             </li>
             <li id="users"><a href="tables.html"><i class="fa fa-users"></i>Manage Users</a></li>
@@ -95,8 +100,18 @@
       if(!isset($_GET['posisi'])) {
         require_once 'overview.php';
       }
+
+      /* Jadwal Dinas */
+      else if(($_GET['posisi'] == "jadwal") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nospt']))))) {
+        require_once 'view/jadwal.php';
+      } else if(($_GET['posisi'] == "jadwal") && ($_GET['type'] == "insert")) {
+        require_once 'input/jadwal.php';
+      } else if(($_GET['posisi'] == "jadwal") && ($_GET['type'] == "edit") && (isset($_GET['nojadwal']))) {
+        require_once 'edit/jadwal.php';
+      }
+
       /* SPT */
-      else if(($_GET['posisi'] == "spt") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" ||(!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nospt']))))) {
+      else if(($_GET['posisi'] == "spt") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nospt']))))) {
         require_once 'view/spt.php';
       } else if(($_GET['posisi'] == "spt") && ($_GET['type'] == "insert")) {
         require_once 'input/spt.php';
@@ -105,7 +120,7 @@
       }
 
       /* SPPD */
-      else if(($_GET['posisi'] == "sppd") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nosppd']))))) {
+      else if(($_GET['posisi'] == "sppd") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nosppd']))))) {
         require_once 'view/sppd.php';
       } else if(($_GET['posisi'] == "sppd") && ($_GET['type'] == "insert")) {
         require_once 'input/sppd.php';
@@ -114,7 +129,7 @@
       }
 
       /* RINCIAN BIAYA */
-      else if(($_GET['posisi'] == "rincianbiaya") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['norincian']))))) {
+      else if(($_GET['posisi'] == "rincianbiaya") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['norincian']))))) {
         require_once 'view/rincianbiaya.php';
       } else if(($_GET['posisi'] == "rincianbiaya") && ($_GET['type'] == "insert")) {
         require_once 'input/rincianbiaya.php';
@@ -123,7 +138,7 @@
       }
 
       /* BUKTI PENGELUARAN */
-      else if(($_GET['posisi'] == "buktipengeluaran") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nobuktipengeluaran']))))) {
+      else if(($_GET['posisi'] == "buktipengeluaran") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nobuktipengeluaran']))))) {
         require_once 'view/buktipengeluaran.php';
       } else if(($_GET['posisi'] == "buktipengeluaran") && ($_GET['type'] == "insert")) {
         require_once 'input/buktipengeluaran.php';
@@ -132,7 +147,7 @@
       }
 
       /* REKENING */
-      else if(($_GET['posisi'] == "rekening") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['norekening']))))) {
+      else if(($_GET['posisi'] == "rekening") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['norekening']))))) {
         require_once 'view/rekening.php';
       } else if(($_GET['posisi'] == "rekening") && ($_GET['type'] == "insert")) {
         require_once 'input/rekening.php';
@@ -141,7 +156,7 @@
       }
 
       /* PERATURAN GUBERNUR */
-      else if(($_GET['posisi'] == "pergub") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nopergub']))))) {
+      else if(($_GET['posisi'] == "pergub") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nopergub']))))) {
         require_once 'view/pergub.php';
       } else if(($_GET['posisi'] == "pergub") && ($_GET['type'] == "insert")) {
         require_once 'input/pergub.php';
@@ -150,7 +165,7 @@
       }
 
       /* DPA */
-      else if(($_GET['posisi'] == "dpa") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nodpa']))))) {
+      else if(($_GET['posisi'] == "dpa") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nodpa']))))) {
         require_once 'view/dpa.php';
       } else if(($_GET['posisi'] == "dpa") && ($_GET['type'] == "insert")) {
         require_once 'input/dpa.php';
@@ -159,7 +174,7 @@
       }
 
       /* SPD */
-      else if(($_GET['posisi'] == "spd") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nospd']))))) {
+      else if(($_GET['posisi'] == "spd") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nospd']))))) {
         require_once 'view/spd.php';
       } else if(($_GET['posisi'] == "spd") && ($_GET['type'] == "insert")) {
         require_once 'input/spd.php';
@@ -168,7 +183,7 @@
       }
 
       /* PEGAWAI */
-      else if(($_GET['posisi'] == "pegawai") && ((!isset($_GET['posisi'])) || $_GET['type'] == "view" || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nip']))))) {
+      else if(($_GET['posisi'] == "pegawai") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nip']))))) {
         require_once 'view/pegawai.php';
       } else if(($_GET['posisi'] == "pegawai") && ($_GET['type'] == "insert")) {
         require_once 'input/pegawai.php';
@@ -202,9 +217,6 @@
     </footer>
 </div>
 
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/Chart.min.js"></script>
 <script src="js/templatemo_script.js"></script>
 <script type="text/javascript">
   var type = "<?php echo (isset($_GET['posisi']) ? $_GET['posisi'] : false) ?>"

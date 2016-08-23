@@ -1,4 +1,6 @@
 <?php
+include_once 'includes/koneksi.php';
+include_once 'includes/function.php';
 // require_once '../koneksi.php';
 
 // if((isset($_SESSION['username']) && isset($_SESSION['login'])) == false) {
@@ -11,8 +13,8 @@
 	<div class="templatemo-content">
 		<ol class="breadcrumb">
 			<li><a href="index.php">Dashboard</a></li>
-			<li><a href="index.php?posisi=spt&type=insert">SPT</a></li>
-			<li>Input SPT</li>
+			<li><a href="index.php?posisi=spt">SPT</a></li>
+			<li class="active">Input SPT</li>
 		</ol>
 		<h1>
 			<b>Surat Perintah Tugas</b>
@@ -93,12 +95,24 @@
 							<label for="pegawai1" class="control-label">Pegawai 1</label>
 							<select class="form-control margin-bottom-15" name="nip1">
 								<option value="">Pilih NIP Pegawai</option>
+								<?php
+									$result = getPegawai("nip");
+									while($row = $result->fetch_object()) {
+										echo "<option value='" . $row->nip . "'>" . $row->nip . "</option>";
+									}
+								?>
 							</select>
 						</div>
 						<div class="col-md-6 margin-bottom-15">
 							<label for="pegawai2" class="control-label">Pegawai 2</label>
 							<select class="form-control margin-bottom-15" name="nip2">
 								<option value="">Pilih NIP Pegawai</option>
+								<?php
+									$result = getPegawai("nip");
+									while($row = $result->fetch_object()) {
+										echo "<option value='" . $row->nip . "'>" . $row->nip . "</option>";
+									}
+								?>
 							</select>
 						</div>
 					</div>
@@ -108,12 +122,24 @@
 							<label for="pegawai3" class="control-label">Pegawai 3</label>
 							<select class="form-control margin-bottom-15" name="nip3">
 								<option value="">Pilih NIP Pegawai</option>
+								<?php
+									$result = getPegawai("nip");
+									while($row = $result->fetch_object()) {
+										echo "<option value='" . $row->nip . "'>" . $row->nip . "</option>";
+									}
+								?>
 							</select>
 						</div>
 						<div class="col-md-6 margin-bottom-15">
 							<label for="pegawai4" class="control-label">Pegawai 4</label>
 							<select class="form-control margin-bottom-15" name="nip4">
 								<option value="">Pilih NIP Pegawai</option>
+								<?php
+									$result = getPegawai("nip");
+									while($row = $result->fetch_object()) {
+										echo "<option value='" . $row->nip . "'>" . $row->nip . "</option>";
+									}
+								?>
 							</select>
 						</div>
 					</div>
@@ -153,9 +179,23 @@
 							<label for="penandatanganSPT" class="control-label">NIP Penandatangan</label>
 							<select class="form-control" name="penandatanganSPT">
 								<option value="">Pilih NIP Pegawai</option>
+								<?php
+									$result = getPegawai("nip");
+									while($row = $result->fetch_object()) {
+										echo "<option value='" . $row->nip . "'>" . $row->nip . "</option>";
+									}
+								?>
 							</select>
 						</div>
 					</div>
+
+					<div class="row">
+						<div class="col-md-12 margin-bottom-15">
+							<input type="submit" name="submit" value="Simpan" class="btn btn-primary">
+							<input type="reset" name="reset" value="Reset" class="btn btn-default">
+						</div>
+					</div>
+					
 				</form>
 			</div>
 		</div>

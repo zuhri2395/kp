@@ -2,12 +2,12 @@
 	<div class="templatemo-content">
 		<ol class="breadcrumb">
 			<li><a href="index.php">Dashboard</a></li>
-			<li class="active">SPT</li>
-			<li><a href="index.php?posisi=spt&type=insert">Input SPT</a></li>
+			<li>Jadwal Dinas</li>
+			<li><a href="index.php?posisi=jadwal&type=insert"></a></li>
 		</ol>
 
 		<h1 class="margin-bottom-15">
-			<b>Surat Perintah Tugas</b>
+			<b>Jadwal Dinas</b>
 		</h1>
 
 		<div class="row">
@@ -17,14 +17,12 @@
 					<table class="table table-striped table-hover table-bordered">
 						<thead>
 							<tr>
-								<th>No Surat</th>
-								<th>Tanggal Keluar SPT</th>
-								<th>No DPA</th>
-								<th>No SPD</th>
-								<th>NIP Pegawai</th>
-								<th>Keterangan SPT</th>
-								<th>Penandatangan</th>
-								<th>Aksi</th>
+								<th>#</th>
+								<th>NIP</th>
+								<th>Nama Pegawai</th>
+								<th>Tanggal Berangkat</th>
+								<th>Tanggal Kembali</th>
+								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -34,8 +32,6 @@
 								<td>3</td>
 								<td>4</td>
 								<td>5</td>
-								<td>6</td>
-								<td>7</td>
 								<td>
 									<div class="btn-group">
 										<button type="button" class="btn btn-info">Action</button>
@@ -44,7 +40,6 @@
 											<span class="sr-only">Toggle Dropdown</span>
 										</button>
 										<ul class="dropdown-menu" role="menu">
-											<li><a href="#">View</a></li>
 											<li><a href="#">Edit</a></li>
 											<li><a href="#">Delete</a></li>
 										</ul>

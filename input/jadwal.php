@@ -1,0 +1,115 @@
+<?php
+// require_once '../koneksi.php';
+
+// if((isset($_SESSION['username']) && isset($_SESSION['login'])) == false) {
+	// header('location:../login.php');
+// } else {
+	
+?>
+
+<div class="templatemo-content-wrapper">
+	<div class="templatemo-content">
+		<ol class="breadcrumb">
+			<li><a href="index.php">Dashboard</a></li>
+			<li><a href="index.php?posisi=spt&type=insert">SPT</a></li>
+			<li>Input SPT</li>
+		</ol>
+		<h1>
+			<b>Jadwal Penugasan</b>
+		</h1>
+		<p class="margin-bottom-15">Form pengisian jadwal penugasan</p>
+		<div class="row">
+			<div class="col-md-12">
+				<form role="form" id="templatemo-preferences-form" action="proses/jadwal.php" method="POST">
+					<div class="row">
+						<div class="col-md-12 margin-bottom-15">
+							<label for="tanggalBerangkat" class="control-label">Tanggal Perjalanan Dinas</label>
+							<input type="text" name="tanggalBerangkat" id="tanggalBerangkat" class="form-control margin-bottom-15">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 margin-bottom 15">
+							<label for="tanggalBerakhir" class="control-label">Tanggal Berakhir Perjalanan Dinas</label>
+							<input type="text" name="tanggalBerakhir" id="tanggalBerakhir" class="form-control margin-bottom-15" disabled>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 margin-bottom-15">
+							<label for="jumlahPegawai" class="label-control">Jumlah Pegawai</label>
+							<select id="jumlahPegawai" class="form-control margin-bottom-15">
+								<option value="">Pilih Jumlah Pegawai</option>
+								<option value="1">1</option>
+								<option value="2">2</option>
+								<option value="3">3</option>
+								<option value="4">4</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="row" hidden id="pegawai1">
+						<div class="col-md-12 margin-bottom-15">
+							<label for="pegawai1" class="control-label">Pegawai 1</label>
+							<select name="nip[]" id="pegawai1" class="form-control margin-bottom-15" disabled>
+								<option value="">Pilih NIP Pegawai</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="row" hidden id="pegawai2">
+						<div class="col-md-12 margin-bottom-15">
+							<label for="pegawai2" class="control-label">Pegawai 2</label>
+							<select name="nip[]" id="pegawai2" class="form-control margin-bottom-15" disabled>
+								<option value="">Pilih NIP Pegawai</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="row" hidden id="pegawai3">
+						<div class="col-md-12 margin-bottom-15">
+							<label for="pegawai3" class="control-label">Pegawai 3</label>
+							<select name="nip[]" id="pegawai3" class="form-control margin-bottom-15" disabled>
+								<option value="">Pilih NIP Pegawai</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="row" hidden id="pegawai4">
+						<div class="col-md-12 margin-bottom-15">
+							<label for="pegawai4" class="control-label">Pegawai 4</label>
+							<select name="nip[]" id="pegawai4" class="form-control margin-bottom-15" disabled>
+								<option value="">Pilih NIP Pegawai</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 margin-bottom-15">
+							<input type="submit" name="submit" value="Simpan" class="btn btn-primary">
+							<input type="reset" name="reset" value="Reset" class="btn btn-default">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$('#jumlahPegawai').on('change', function() {
+		jumlah = $(this).val();
+
+		for(var i = 1; i <= jumlah; i++) {
+			$('#pegawai' + i).show();
+			$('#pegawai' + i).find('*').removeAttr('disabled');
+		}
+
+		for(var j = 4; j > jumlah; j--) {
+			$('#pegawai' + j).hide();
+			$('#pegawai' + i).find('*').attr('disabled', true);
+		}
+	});
+</script>
+
+<?php //} ?>
