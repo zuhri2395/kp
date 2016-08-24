@@ -20,7 +20,7 @@
 		<p class="margin-bottom-15">Form pengisian jadwal penugasan</p>
 		<div class="row">
 			<div class="col-md-12">
-				<form role="form" id="templatemo-preferences-form" action="proses/jadwal.php" method="POST">
+				<form role="form" id="templatemo-preferences-form" action="proses/inputJadwal.php" method="POST">
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="tanggalBerangkat" class="control-label">Tanggal Perjalanan Dinas</label>

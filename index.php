@@ -212,6 +212,9 @@
   var type = "<?php echo (isset($_GET['posisi']) ? $_GET['posisi'] : false) ?>"
   if(type == false) {
     $('#dashboard').addClass("active");
+  } else if(type == "dpa" || type == "pergub" || type == "rekening" || type == "pegawai" || type == "buktipengeluaran" || type == "rincianbiaya") {
+    $('#lainnya').addClass("open");
+    $('#lainnya').addClass("active");
   } else {
     $('#' + type).addClass("open");
     $('#' + type).addClass("active");

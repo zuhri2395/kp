@@ -12,7 +12,7 @@
 		<p class="margin-bottom-15">Form Penambahan Data No Rekening</p>
 		<div class="row">
 			<div class="col-md-12">
-				<form role="form" id="templatemo-preferences-form" action="proses/rekening.php" method="POST">
+				<form role="form" id="templatemo-preferences-form" action="proses/inputRekening.php" method="POST">
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="nomorRekening" class="control-label">Nomor Rekening</label>
