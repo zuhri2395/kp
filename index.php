@@ -84,7 +84,6 @@
                     <li><a href="index.php?posisi=buktipengeluaran">Bukti Pengeluaran</a></li>
                     <li><a href="index.php?posisi=pergub">Peraturan Gubernur</a></li>
                     <li><a href="index.php?posisi=dpa">Dokumen Pelaksana Anggaran</a></li>
-                    <li><a href="index.php?posisi=spd">Surat Penyedia Anggaran</a></li>
                     <li><a href="index.php?posisi=pegawai">Pegawai</a></li>
                     <li><a href="index.php?posisi=rekening">Rekening</a></li>
                 </ul>
@@ -171,15 +170,6 @@
         require_once 'input/dpa.php';
       } else if(($_GET['posisi'] == "dpa") && ($_GET['type'] == "edit") && (isset($_GET['nodpa']))) {
         require_once 'edit/dpa.php';
-      }
-
-      /* SPD */
-      else if(($_GET['posisi'] == "spd") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nospd']))))) {
-        require_once 'view/spd.php';
-      } else if(($_GET['posisi'] == "spd") && ($_GET['type'] == "insert")) {
-        require_once 'input/spd.php';
-      } else if(($_GET['posisi'] == "spd") && ($_GET['type'] == "edit") && (isset($_GET['nospd']))) {
-        require_once 'edit/spd.php';
       }
 
       /* PEGAWAI */
