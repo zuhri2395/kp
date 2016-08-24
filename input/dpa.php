@@ -23,7 +23,7 @@
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="kegiatan" class="control-label">Kegiatan</label>
-							<input type="text" name="kegiatan" id="Kegiatan" class="form-control" placeholder="Kegiatan" required>
+							<textarea class="form-control" name="kegiatan" id="kegiatan" rows="3" placeholder="Kegiatan"></textarea>
 						</div>
 					</div>
 
