@@ -1,4 +1,5 @@
 /* Credit: http://www.templatemo.com */
+
 $(document).ready(function() {     
 
 	$.datepicker.setDefaults({
@@ -20,5 +21,4 @@ $(document).ready(function() {
 	});
 
 	$('.tanggal').datepicker();
-
 }); // document.ready
