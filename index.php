@@ -101,7 +101,7 @@
       }
 
       /* Jadwal Dinas */
-      else if(($_GET['posisi'] == "jadwal") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nospt']))))) {
+      else if(($_GET['posisi'] == "jadwal") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])))) {
         require_once 'view/jadwal.php';
       } else if(($_GET['posisi'] == "jadwal") && ($_GET['type'] == "insert")) {
         require_once 'input/jadwal.php';
@@ -110,7 +110,7 @@
       }
 
       /* SPT */
-      else if(($_GET['posisi'] == "spt") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nospt']))))) {
+      else if(($_GET['posisi'] == "spt") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])))) {
         require_once 'view/spt.php';
       } else if(($_GET['posisi'] == "spt") && ($_GET['type'] == "insert")) {
         require_once 'input/spt.php';
@@ -119,7 +119,7 @@
       }
 
       /* SPPD */
-      else if(($_GET['posisi'] == "sppd") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nosppd']))))) {
+      else if(($_GET['posisi'] == "sppd") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])))) {
         require_once 'view/sppd.php';
       } else if(($_GET['posisi'] == "sppd") && ($_GET['type'] == "insert")) {
         require_once 'input/sppd.php';
@@ -128,7 +128,7 @@
       }
 
       /* RINCIAN BIAYA */
-      else if(($_GET['posisi'] == "rincianbiaya") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['norincian']))))) {
+      else if(($_GET['posisi'] == "rincianbiaya") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])))) {
         require_once 'view/rincianbiaya.php';
       } else if(($_GET['posisi'] == "rincianbiaya") && ($_GET['type'] == "insert")) {
         require_once 'input/rincianbiaya.php';
@@ -137,7 +137,7 @@
       }
 
       /* BUKTI PENGELUARAN */
-      else if(($_GET['posisi'] == "buktipengeluaran") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nobuktipengeluaran']))))) {
+      else if(($_GET['posisi'] == "buktipengeluaran") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])))) {
         require_once 'view/buktipengeluaran.php';
       } else if(($_GET['posisi'] == "buktipengeluaran") && ($_GET['type'] == "insert")) {
         require_once 'input/buktipengeluaran.php';
@@ -146,7 +146,7 @@
       }
 
       /* REKENING */
-      else if(($_GET['posisi'] == "rekening") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['norekening']))))) {
+      else if(($_GET['posisi'] == "rekening") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])))) {
         require_once 'view/rekening.php';
       } else if(($_GET['posisi'] == "rekening") && ($_GET['type'] == "insert")) {
         require_once 'input/rekening.php';
@@ -155,7 +155,7 @@
       }
 
       /* PERATURAN GUBERNUR */
-      else if(($_GET['posisi'] == "pergub") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nopergub']))))) {
+      else if(($_GET['posisi'] == "pergub") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])))) {
         require_once 'view/pergub.php';
       } else if(($_GET['posisi'] == "pergub") && ($_GET['type'] == "insert")) {
         require_once 'input/pergub.php';
@@ -164,16 +164,16 @@
       }
 
       /* DPA */
-      else if(($_GET['posisi'] == "dpa") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nodpa']))))) {
+      else if(($_GET['posisi'] == "dpa") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])))) {
         require_once 'view/dpa.php';
       } else if(($_GET['posisi'] == "dpa") && ($_GET['type'] == "insert")) {
         require_once 'input/dpa.php';
-      } else if(($_GET['posisi'] == "dpa") && ($_GET['type'] == "edit") && (isset($_GET['nodpa']))) {
+      } else if(($_GET['posisi'] == "dpa") && ($_GET['type'] == "edit") && (isset($_GET['noDPA']))) {
         require_once 'edit/dpa.php';
       }
 
       /* PEGAWAI */
-      else if(($_GET['posisi'] == "pegawai") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])) || (($_GET['type'] == "edit") && (!isset($_GET['nip']))))) {
+      else if(($_GET['posisi'] == "pegawai") && ((!isset($_GET['posisi'])) || (!isset($_GET['type'])))) {
         require_once 'view/pegawai.php';
       } else if(($_GET['posisi'] == "pegawai") && ($_GET['type'] == "insert")) {
         require_once 'input/pegawai.php';

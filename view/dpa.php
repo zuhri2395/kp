@@ -42,7 +42,7 @@
 								echo "</button>";
 								echo "<ul class='dropdown-menu' roles='menu'>";
 								echo "<li><a href='index.php?posisi=dpa&type=edit&noDPA=" . $row->noDPA . "'>Edit</a></li>";
-								echo "<li><a href='index.php?posisi=dpa&type=delete&noDPA=" . $row->noDPA . "'>Delete</a></li>";
+								echo "<li><a href='delete/dpa.php?noDPA=" . $row->noDPA . "'>Delete</a></li>";
 								echo "</ul>";
 								echo "</tr>";
 							}
