@@ -27,7 +27,7 @@ include_once 'includes/function.php';
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="noSPT" class="control-label">Nomor Surat Perintah Tugas</label>
-							<input type="text" class="form-control" name="nomorSPT" placeholder="No Surat Perintah Tugas">
+							<input type="text" id="noSPT" class="form-control" name="nomorSPT" placeholder="No Surat Perintah Tugas">
 						</div>
 					</div>
 
@@ -39,7 +39,7 @@ include_once 'includes/function.php';
 						<!-- Nomor Peraturan Gubernur -->
 						<div class="col-md-6 margin-bottom-15">
 							<label for="nomorPeraturanGubernur" class="control-label">Nomor Peraturan Gubernur</label>
-							<select class="form-control margin-bottom-15" name="nomorPeraturanGubernur">
+							<select class="form-control margin-bottom-15" name="nomorPeraturanGubernur" id="nomorPeraturanGubernur">
 								<option value="">Pilih No Peraturan Gubernur</option>
 							</select>
 						</div>
@@ -47,7 +47,7 @@ include_once 'includes/function.php';
 						<!-- Nomor Dokumen Penyedia Anggaran -->
 						<div class="col-md-6 margin-bottom-15">
 							<label for="nomorDPA" class="control-label">Nomor Dokumen Penyedia Anggaran</label>
-							<select class="form-control margin-bottom-15" name="nomorDPA">
+							<select class="form-control margin-bottom-15" name="nomorDPA" id="nomorDPA">
 								<option value="">Pilih No DPA-SKPD</option>
 							</select>
 						</div>
@@ -57,7 +57,7 @@ include_once 'includes/function.php';
 						<!-- Nomor SPD -->
 						<div class="col-md-12 margin-bottom-15">
 							<label for="nomorSPD" class="control-label">No SPD</label>
-							<select class="form-control margin-bottom-15" name="nomorSPD">
+							<select class="form-control margin-bottom-15" name="nomorSPD" id="nomorSPD">
 								<option value="">Pilih No SPD-SKPD</option>
 							</select>
 						</div>
@@ -70,7 +70,7 @@ include_once 'includes/function.php';
 					<div class="row">
 						<div class="col-md-6 margin-bottom-15">
 							<label for="tanggalDinas" class="control-label">Tanggal Perjalanan Dinas</label>
-							<select class="form-control margin-bottom-15" name="tanggalDinas">
+							<select class="form-control margin-bottom-15" name="tanggalDinas" id="tanggalDinas">
 								<option value="">Pilih Tanggal Perjalanan Dinas</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -81,7 +81,7 @@ include_once 'includes/function.php';
 
 						<div class="col-md-6 margin-bottom-15">
 							<label for="jumlahPegawai" class="control-label">Jumlah Pegawai</label>
-							<select class="form-control margin-bottom-15">
+							<select class="form-control margin-bottom-15" id="jumlahPegawai">
 								<option value="">Pilih Jumlah Pegawai</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -93,7 +93,7 @@ include_once 'includes/function.php';
 					<div class="row">
 						<div class="col-md-6 margin-bottom-15">
 							<label for="pegawai1" class="control-label">Pegawai 1</label>
-							<select class="form-control margin-bottom-15" name="nip1">
+							<select class="form-control margin-bottom-15" name="nip1" id="pegawai1">
 								<option value="">Pilih NIP Pegawai</option>
 								<?php
 									$result = getPegawai("nip");
@@ -105,7 +105,7 @@ include_once 'includes/function.php';
 						</div>
 						<div class="col-md-6 margin-bottom-15">
 							<label for="pegawai2" class="control-label">Pegawai 2</label>
-							<select class="form-control margin-bottom-15" name="nip2">
+							<select class="form-control margin-bottom-15" name="nip2" id="pegawai2">
 								<option value="">Pilih NIP Pegawai</option>
 								<?php
 									$result = getPegawai("nip");
@@ -120,7 +120,7 @@ include_once 'includes/function.php';
 					<div class="row">
 						<div class="col-md-6 margin-bottom-15">
 							<label for="pegawai3" class="control-label">Pegawai 3</label>
-							<select class="form-control margin-bottom-15" name="nip3">
+							<select class="form-control margin-bottom-15" name="nip3" id="pegawai3">
 								<option value="">Pilih NIP Pegawai</option>
 								<?php
 									$result = getPegawai("nip");
@@ -132,7 +132,7 @@ include_once 'includes/function.php';
 						</div>
 						<div class="col-md-6 margin-bottom-15">
 							<label for="pegawai4" class="control-label">Pegawai 4</label>
-							<select class="form-control margin-bottom-15" name="nip4">
+							<select class="form-control margin-bottom-15" name="nip4" id="pegawai4">
 								<option value="">Pilih NIP Pegawai</option>
 								<?php
 									$result = getPegawai("nip");
@@ -151,33 +151,33 @@ include_once 'includes/function.php';
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="keterangan" class="control-label">Keterangan SPT</label>
-							<textarea class="form-control margin-bottom-15" rows="3" placeholder="Keterangan SPT" name="keterangan"></textarea>
+							<textarea class="form-control margin-bottom-15" rows="3" placeholder="Keterangan SPT" name="keterangan" id="keterangan"></textarea>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-6 margin-bottom-15">
 							<label for="tanggalSPT" class="control-label">Tanggal Keluar SPT</label>
-							<input class="form-control" type="text" name="tanggalSPT" placeholder="Tanggal Keluar SPT">
+							<input class="form-control readonly tanggal" type="text" name="tanggalSPT" id="tanggalSPT" placeholder="Tanggal Keluar SPT">
 						</div>
 						
 						<div class="col-md-6 margin-bottom-15">
 							<label for="dikeluarkan" class="control-label">Dikeluarkan di Kota</label>
-							<input class="form-control" type="text" name="dikeluarkan" placeholder="Dikeluarkan di Kota">
+							<input class="form-control" type="text" name="dikeluarkan" id="dikeluarkan" placeholder="Dikeluarkan di Kota">
 						</div>
 					</div>
 
 					<div class="row">
 							<div class="col-md-6 margin-bottom-15">
 							<label for="statusKadin" class="control-label">Status Kepala Dinas</label>
-							<select class="form-control" name="statusKadin">
+							<select class="form-control" name="statusKadin" id="statusKadin">
 								<option value="">Pilih Status Kepala Dinas</option>
 							</select>
 						</div>
 
 						<div class="col-md-6 margin-bottom-15">
 							<label for="penandatanganSPT" class="control-label">NIP Penandatangan</label>
-							<select class="form-control" name="penandatanganSPT">
+							<select class="form-control" name="penandatanganSPT" id="penandatanganSPT">
 								<option value="">Pilih NIP Pegawai</option>
 								<?php
 									$result = getPegawai("nip");

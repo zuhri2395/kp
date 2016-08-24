@@ -38,7 +38,7 @@
 								<td>7</td>
 								<td>
 									<div class="btn-group">
-										<button type="button" class="btn btn-info">Action</button>
+										<button type="button" class="btn btn-info">Aksi</button>
 										<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
 											<span class="caret"></span>
 											<span class="sr-only">Toggle Dropdown</span>

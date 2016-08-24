@@ -16,21 +16,21 @@
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="nomorRekening" class="control-label">Nomor Rekening</label>
-							<input type="text" name="nomorRekening" class="form-control" placeholder="Nomor Rekening">
+							<input type="text" name="nomorRekening" class="form-control" id="nomorRekening" placeholder="Nomor Rekening" required>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="judul" class="control-label">Judul</label>
-							<input type="text" name="judul" class="form-control" placeholder="Judul">
+							<input type="text" name="judul" id="judul" class="form-control" placeholder="Judul" required>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="uraian" class="control-label">Uraian</label>
-							<textarea class="form-control margin-bottom-15" rows="3" placeholder="Uraian" name="uraian"></textarea>
+							<textarea class="form-control margin-bottom-15" id="uraian" rows="3" placeholder="Uraian" name="uraian" required></textarea>
 						</div>
 					</div>
 

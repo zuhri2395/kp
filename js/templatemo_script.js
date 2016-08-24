@@ -1,10 +1,4 @@
 /* Credit: http://www.templatemo.com */
-function setMinDate(value) {
-	$('#tanggalBerakhir').datepicker({
-		minDate: value
-	});
-}
-
 $(document).ready(function() {     
 
 	$.datepicker.setDefaults({
@@ -21,13 +15,10 @@ $(document).ready(function() {
 		$(this).parent().addClass('open');
 	});
 
-	$('#tanggalBerangkat').datepicker({
-			minDate: 0,
-			onSelect: function(selected, evnt) {
-				$('#tanggalBerakhir').datepicker('destroy');
-				setMinDate(selected);
-				$('#tanggalBerakhir').removeAttr('disabled');
-			}
+	$('.readonly').keydown(function(e) {
+		e.preventDefault();
 	});
+
+	$('.tanggal').datepicker();
 
 }); // document.ready

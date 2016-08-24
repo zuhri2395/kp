@@ -43,7 +43,7 @@
 								echo "</td>";
 								echo "<td>";
 								echo "<div class='btn-group'>";
-								echo "<button type='button' class='btn btn-info'>Action</button>";
+								echo "<button type='button' class='btn btn-info'>Aksi</button>";
 								echo "<button type='button' class='btn btn-info dropdown-toggle' data-toggle='dropdown'>";
 								echo "<span class='caret'></span>";
 								echo "<span class='sr-only'>Toggle Dropdown</span>";

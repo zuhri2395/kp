@@ -24,21 +24,21 @@
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="tanggalBerangkat" class="control-label">Tanggal Perjalanan Dinas</label>
-							<input type="text" name="tanggalBerangkat" id="tanggalBerangkat" class="form-control margin-bottom-15">
+							<input type="text" name="tanggalBerangkat" id="tanggalBerangkat" class="form-control margin-bottom-15 readonly" required>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-12 margin-bottom 15">
 							<label for="tanggalBerakhir" class="control-label">Tanggal Berakhir Perjalanan Dinas</label>
-							<input type="text" name="tanggalBerakhir" id="tanggalBerakhir" class="form-control margin-bottom-15" disabled>
+							<input type="text" name="tanggalBerakhir" id="tanggalBerakhir" class="form-control margin-bottom-15 readonly" disabled>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="jumlahPegawai" class="label-control">Jumlah Pegawai</label>
-							<select id="jumlahPegawai" class="form-control margin-bottom-15">
+							<select id="jumlahPegawai" class="form-control margin-bottom-15" required>
 								<option value="">Pilih Jumlah Pegawai</option>
 								<option value="1">1</option>
 								<option value="2">2</option>
@@ -97,18 +97,38 @@
 </div>
 
 <script type="text/javascript">
-	$('#jumlahPegawai').on('change', function() {
-		jumlah = $(this).val();
+	function setMinDate(value) {
+		$('#tanggalBerakhir').datepicker({
+			minDate: value
+		});
+	}
 
-		for(var i = 1; i <= jumlah; i++) {
-			$('#pegawai' + i).show();
-			$('#pegawai' + i).find('*').removeAttr('disabled');
-		}
+	$(document).ready(function() {
+		$('#tanggalBerangkat').datepicker({
+				minDate: 0,
+				onSelect: function(selected, evnt) {
+					$('#tanggalBerakhir').datepicker('destroy');
+					setMinDate(selected);
+					$('#tanggalBerakhir').removeAttr('disabled');
+					$('#tanggalBerakhir').attr('required', true);
+				}
+		});
 
-		for(var j = 4; j > jumlah; j--) {
-			$('#pegawai' + j).hide();
-			$('#pegawai' + i).find('*').attr('disabled', true);
-		}
+		$('#jumlahPegawai').on('change', function() {
+			jumlah = $(this).val();
+
+			for(var i = 1; i <= jumlah; i++) {
+				$('#pegawai' + i).show();
+				$('#pegawai' + i).find('*').removeAttr('disabled');
+				$('#pegawai' + i).find('*').attr('required', true);
+			}
+
+			for(var j = 4; j > jumlah; j--) {
+				$('#pegawai' + j).hide();
+				$('#pegawai' + i).find('*').attr('disabled', true);
+				$('#pegawai' + i).find('*').attr('required', false);
+			}
+		});
 	});
 </script>
 

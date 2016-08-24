@@ -17,14 +17,14 @@
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="nip" class="control-label">Nomor Induk Pegawai</label>
-							<input type="text" class="form-control" name="nip" placeholder="No Induk Pegawai">
+							<input type="text" class="form-control" name="nip" id="nip" placeholder="No Induk Pegawai" required>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="nama" class="control-label">Nama Pegawai</label>
-							<input type="text" class="form-control" name="nama" placeholder="Nama Pegawai">
+							<input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Pegawai" required>
 						</div>
 					</div>
 
@@ -81,12 +81,12 @@
 					<div class="row">
 						<div class="col-md-6 margin-bottom-15">
 							<label for="jabatan" class="control-label">Jabatan</label>
-							<input type="text" class="form-control" name="jabatan" placeholder="Jabatan Pegawai">
+							<input type="text" class="form-control" name="jabatan" id="jabatan" placeholder="Jabatan Pegawai" required>
 						</div>
 
 						<div class="col-md-6 margin-bottom-15">
 							<label for="npwp" class="control-label">NPWP</label>
-							<select class="form-control margin-bottom-15" name="npwp" required>
+							<select class="form-control margin-bottom-15" name="npwp" id="npwp" required>
 								<option value="">Pilih Status Kepemilikan NPWP</option>
 								<option value="Iya">Iya</option>
 								<option value="Tidak">Tidak</option>
