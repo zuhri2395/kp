@@ -7,7 +7,6 @@ $tanggalBerangkat = convertMonth($_POST['tanggalBerangkat']);
 $tanggalBerakhir = convertMonth($_POST['tanggalBerakhir']);
 
 foreach($nip as $list) {
-	// $query = mysql_query("SELECT * FROM jadwal_dinas WHERE nip='$list'");
 	$sql = "SELECT * FROM jadwal_dinas WHERE nip='$list'";
 	$query = $conn->query($sql);
 	$inpBerangkat = strtotime($tanggalBerangkat);
@@ -34,7 +33,7 @@ foreach($nip as $list) {
 	}
 
 	if($crash > 0) {
-		header('location:../inpJadwal.php?status=gagal');
+		header('location:index.php?posisi=jadwal');
 	} else {
 		$tanggalBerangkat = convertMonth($tanggalBerangkat, 1);
 		$tanggalBerakhir = convertMonth($tanggalBerakhir,1);
@@ -43,6 +42,6 @@ foreach($nip as $list) {
 		$prepared = $conn->prepare($sql);
         $prepared->bind_param("sss", $list, $tanggalBerangkat, $tanggalBerakhir);
         $prepared->execute();
-		header('location:../inpJadwal.php?status=gagal');
+		header('location:index.php?posisi=jadwal');
 	}
 }

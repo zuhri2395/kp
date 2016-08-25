@@ -17,7 +17,7 @@ $result = $result->fetch_object();
 		<h1 class="margin-bottom-15">
 			<b>Rekening</b>
 		</h1>
-		<p class="margin-bottom-15">Form Penambahan Data No Rekening</p>
+		<p class="margin-bottom-15">Form Edit Data No Rekening</p>
 		<div class="row">
 			<div class="col-md-12">
 				<form role="form" id="templatemo-preferences-form" action="proses/editRekening.php" method="POST">

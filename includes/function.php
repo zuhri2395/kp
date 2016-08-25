@@ -27,8 +27,9 @@ function convertMonth($input, $type = "0") {
 
 function getPegawai($select = "*") {
 	global $conn;
+	$select = $conn->real_escape_string($select);
 
-	$sql = "SELECT " . $select . " FROM pegawai";
+	$sql = "SELECT ". $select . " FROM pegawai";
 	$result = $conn->query($sql);
 	return $result;
 }

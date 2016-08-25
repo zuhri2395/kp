@@ -106,7 +106,7 @@
         require_once 'view/jadwal.php';
       } else if(($_GET['posisi'] == "jadwal") && ($_GET['type'] == "insert")) {
         require_once 'input/jadwal.php';
-      } else if(($_GET['posisi'] == "jadwal") && ($_GET['type'] == "edit") && (isset($_GET['nojadwal']))) {
+      } else if(($_GET['posisi'] == "jadwal") && ($_GET['type'] == "edit") && (isset($_GET['no']))) {
         require_once 'edit/jadwal.php';
       }
 

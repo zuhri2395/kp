@@ -18,7 +18,7 @@ $result = $result->fetch_object();
 		<h1>
 			<b>Peraturan Gubernur</b>
 		</h1>
-		<p class="margin-bottom-15">Form Pengisian Peraturan Gubernur</p>
+		<p class="margin-bottom-15">Form Edit Peraturan Gubernur</p>
 		<div class="row">
 			<div class="col-md-12">
 				<form role="form" id="templatemo-preferences-form" action="proses/editPergub.php" method="POST">

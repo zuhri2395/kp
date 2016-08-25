@@ -1,12 +1,6 @@
 <?php
 include_once 'includes/koneksi.php';
 include_once 'includes/function.php';
-// require_once '../koneksi.php';
-
-// if((isset($_SESSION['username']) && isset($_SESSION['login'])) == false) {
-	// header('location:../login.php');
-// } else {
-	
 ?>
 
 <div class="templatemo-content-wrapper">
