@@ -33,3 +33,31 @@ function getPegawai($select = "*") {
 	$result = $conn->query($sql);
 	return $result;
 }
+
+function getRekening($select = "*") {
+	global $conn;
+	$select = $conn->real_escape_string($select);
+
+	$sql = "SELECT ". $select . " FROM rekening";
+	$result = $conn->query($sql);
+	return $result;
+}
+
+function getDPA($select = "*") {
+	global $conn;
+	$select = $conn->real_escape_string($select);
+
+	$sql = "SELECT ". $select . " FROM dpa";
+	$result = $conn->query($sql);
+	return $result;
+}
+
+function getPergub($select = "*") {
+	global $conn;
+	$select = $conn->real_escape_string($select);
+
+	$sql = "SELECT ". $select . " FROM pergub";
+	$result = $conn->query($sql);
+	return $result;
+}
+
