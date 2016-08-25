@@ -1,6 +1,6 @@
 <?php
-include_once 'includes/koneksi.php';
-include 'includes/function.php';
+include_once '../includes/koneksi.php';
+include '../includes/function.php';
 
 $nip = $_POST['nip'];
 $tanggalBerangkat = convertMonth($_POST['tanggalBerangkat']);
@@ -33,7 +33,7 @@ foreach($nip as $list) {
 	}
 
 	if($crash > 0) {
-		header('location:index.php?posisi=jadwal');
+		header('location:../index.php?posisi=jadwal&status=gagal');
 	} else {
 		$tanggalBerangkat = convertMonth($tanggalBerangkat, 1);
 		$tanggalBerakhir = convertMonth($tanggalBerakhir,1);
@@ -42,6 +42,6 @@ foreach($nip as $list) {
 		$prepared = $conn->prepare($sql);
         $prepared->bind_param("sss", $list, $tanggalBerangkat, $tanggalBerakhir);
         $prepared->execute();
-		header('location:index.php?posisi=jadwal');
+		header('location:../index.php?posisi=jadwal&status=sukses');
 	}
 }
