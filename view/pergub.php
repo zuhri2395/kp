@@ -44,8 +44,8 @@
 								echo "<ul class='dropdown-menu' roles='menu'>";
 								echo "<li><a href='index.php?posisi=pergub&type=edit&noPergub=" . $row->noPergub . "'>Edit</a></li>";
 								echo "<li>";
-								echo "<form action='proses/deleteDPA.php' method='POST'>";
-								echo "<input type='hidden' name='noDPA' value='" . $row->noDPA . "'/>";
+								echo "<form action='proses/deletePergub.php' method='POST'>";
+								echo "<input type='hidden' name='noPergub' value='" . $row->noPergub . "'/>";
 								echo "<button class='tombol-drop' type='submit'>Delete</button>";
 								echo "</form>";
 								echo "</li>";

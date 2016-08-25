@@ -160,7 +160,7 @@
         require_once 'view/pergub.php';
       } else if(($_GET['posisi'] == "pergub") && ($_GET['type'] == "insert")) {
         require_once 'input/pergub.php';
-      } else if(($_GET['posisi'] == "pergub") && ($_GET['type'] == "edit") && (isset($_GET['nopergub']))) {
+      } else if(($_GET['posisi'] == "pergub") && ($_GET['type'] == "edit") && (isset($_GET['noPergub']))) {
         require_once 'edit/pergub.php';
       }
 
