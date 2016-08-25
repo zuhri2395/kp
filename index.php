@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="css/templatemo_main.css">
     <link rel="stylesheet" type="text/css" href="css/jquery-ui.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/Chart.min.js"></script>
@@ -150,7 +151,7 @@
         require_once 'view/rekening.php';
       } else if(($_GET['posisi'] == "rekening") && ($_GET['type'] == "insert")) {
         require_once 'input/rekening.php';
-      } else if(($_GET['posisi'] == "rekening") && ($_GET['type'] == "edit") && (isset($_GET['norekening']))) {
+      } else if(($_GET['posisi'] == "rekening") && ($_GET['type'] == "edit") && (isset($_GET['nomorRekening']))) {
         require_once 'edit/rekening.php';
       }
 

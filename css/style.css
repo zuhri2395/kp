@@ -1,0 +1,16 @@
+.tombol-drop {
+	clear: both;
+	color: #333;
+	display: block;
+	font-weight: 400;
+	line-height: 1.425857;
+	padding: 3px 100% 3px 20px;
+	white-space: nowrap;
+	border: none;
+	background: none;
+}
+
+.tombol-drop:hover {
+	background-color: #f5f5f5;
+	color: #262626;
+}

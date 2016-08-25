@@ -1,7 +1,7 @@
 <?php
 include_once '../includes/koneksi.php';
 
-$noDPA = $_GET['noDPA'];
+$noDPA = $_POST['noDPA'];
 
 $sql = "DELETE FROM dpa WHERE noDPA=?";
 $stmt = $conn->prepare($sql);

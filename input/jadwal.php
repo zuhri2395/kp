@@ -17,7 +17,7 @@
 		<h1>
 			<b>Jadwal Penugasan</b>
 		</h1>
-		<p class="margin-bottom-15">Form pengisian jadwal penugasan</p>
+		<p class="margin-bottom-15">Form Pengisian Jadwal Penugasan</p>
 		<div class="row">
 			<div class="col-md-12">
 				<form role="form" id="templatemo-preferences-form" action="proses/inputJadwal.php" method="POST">

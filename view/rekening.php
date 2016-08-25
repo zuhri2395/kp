@@ -33,15 +33,20 @@
 								echo "<td>" . $row->judul . "</td>";
 								echo "<td>";
 								echo "<div class='btn-group'>";
-								echo "<button type='button' class='btn btn-info'>Aksi</button>";
-								echo "<button type='button' class='btn btn-info dropdown-toggle' data-toggle='dropdown'>";
+								echo "<button type='button' class='btn btn-info dropdown-toggle' data-toggle='dropdown'>Aksi ";
 								echo "<span class='caret'></span>";
 								echo "<span class='sr-only'>Toggle Dropdown</span>";
 								echo "</button>";
 								echo "<ul class='dropdown-menu' roles='menu'>";
 								echo "<li><a href='index.php?posisi=rekening&type=edit&nomorRekening=" . $row->nomorRekening . "'>Edit</a></li>";
-								echo "<li><a href='index.php?posisi=rekening&type=delete&nomorRekening=" . $row->nomorRekening . "'>Delete</a></li>";
+								echo "<li>";
+								echo "<form action='proses/deleteRekening.php' method='POST'>";
+								echo "<input type='hidden' name='nomorRekening' value='" . $row->nomorRekening . "'/>";
+								echo "<button class='tombol-drop' type='submit'>Delete</button>";
+								echo "</form>";
+								echo "</li>";
 								echo "</ul>";
+								echo "</div>";
 								echo "</tr>";
 							}
 						?>

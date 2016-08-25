@@ -1,7 +1,7 @@
 <?php
 include_once '../includes/koneksi.php';
 
-$nip = $_GET['nip'];
+$nip = $_POST['nip'];
 
 $sql = "DELETE FROM pegawai WHERE nip=?";
 $stmt = $conn->prepare($sql);

@@ -47,14 +47,16 @@
 								echo "<span class='caret'></span>";
 								echo "<span class='sr-only'>Toggle Dropdown</span>";
 								echo "</button>";
-								// echo "<button type='button' class='btn btn-info dropdown-toggle' data-toggle='dropdown'>";
-								// echo "<span class='caret'></span>";
-								// echo "<span class='sr-only'>Toggle Dropdown</span>";
-								// echo "</button>";
 								echo "<ul class='dropdown-menu' roles='menu'>";
 								echo "<li><a href='index.php?posisi=pegawai&type=edit&nip=" . $row->nip . "'>Edit</a></li>";
-								echo "<li><a href='delete/pegawai.php?&nip=" . $row->nip . "'>Delete</a></li>";
+								echo "<li>";
+								echo "<form action='proses/deletePegawai.php' method='POST'>";
+								echo "<input type='hidden' name='nip' value='" . $row->nip . "'/>";
+								echo "<button class='tombol-drop' type='submit'>Delete</button>";
+								echo "</form>";
+								echo "</li>";
 								echo "</ul>";
+								echo "</div>";
 								echo "</tr>";
 							}
 						?>

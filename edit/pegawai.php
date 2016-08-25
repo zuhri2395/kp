@@ -25,14 +25,14 @@ $result = $result->fetch_object();
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="nip" class="control-label">Nomor Induk Pegawai</label>
-							<input type="text" class="form-control" name="nip" id="nip" value="<?= $result->nip ?>" placeholder="No Induk Pegawai" readonly>
+							<input type="text" class="form-control" name="nip" id="nip" value="<?= $result->nip; ?>" placeholder="No Induk Pegawai" readonly>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="nama" class="control-label">Nama Pegawai</label>
-							<input type="text" class="form-control" name="nama" id="nama" value="<?= $result->nama ?>" placeholder="Nama Pegawai" required>
+							<input type="text" class="form-control" name="nama" id="nama" value="<?= $result->nama; ?>" placeholder="Nama Pegawai"; required>
 						</div>
 					</div>
 
@@ -89,7 +89,7 @@ $result = $result->fetch_object();
 					<div class="row">
 						<div class="col-md-6 margin-bottom-15">
 							<label for="jabatan" class="control-label">Jabatan</label>
-							<input type="text" class="form-control" name="jabatan" id="jabatan" value="<?= $result->jabatan ?>" placeholder="Jabatan Pegawai" required>
+							<input type="text" class="form-control" name="jabatan" id="jabatan" value="<?= $result->jabatan; ?>" placeholder="Jabatan Pegawai" required>
 						</div>
 
 						<div class="col-md-6 margin-bottom-15">
@@ -117,8 +117,8 @@ $result = $result->fetch_object();
 
 <script type="text/javascript">
 	$(document).ready(function() {
-		var pangkat = "<?= $result->pangkat ?>";
-		var golongan = "<?= $result->golongan ?>";
+		var pangkat = "<?= $result->pangkat; ?>";
+		var golongan = "<?= $result->golongan; ?>";
 		var npwp = "<?= $result->npwp ?>";
 
 		$('#pangkat').val(pangkat);

@@ -19,7 +19,7 @@ include_once 'includes/function.php';
 		<h1>
 			<b>Surat Perintah Tugas</b>
 		</h1>
-		<p class="margin-bottom-15">Form pengisian surat perintah tugas</p>
+		<p class="margin-bottom-15">Form Pengisian Surat Perintah Tugas</p>
 		<div class="row">
 			<div class="col-md-12">
 				<form role="form" id="templatemo-preferences-form">
