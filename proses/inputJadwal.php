@@ -25,7 +25,11 @@ foreach($nip as $list) {
 			}
 		} else {
 			if($inpBerangkat != $dbPulang && $inpBerangkat != $dbBerangkat) {
-				
+				if($inpPulang >= $dbPulang) {
+					$crash++;
+				} else {
+
+				}
 			} else {
 				$crash++;
 			}
