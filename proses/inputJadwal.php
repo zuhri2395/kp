@@ -24,7 +24,7 @@ foreach($nip as $list) {
 				$crash++;
 			}
 		} else {
-			if($inpBerangkat != $dbPulang) {
+			if($inpBerangkat != $dbPulang && $inpBerangkat != $dbBerangkat) {
 				
 			} else {
 				$crash++;
