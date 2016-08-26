@@ -3,12 +3,14 @@ include_once '../includes/koneksi.php';
 include '../includes/function.php';
 
 $nip = $_POST['nip'];
-$tanggalBerangkat = convertMonth($_POST['tanggalBerangkat']);
-$tanggalBerakhir = convertMonth($_POST['tanggalBerakhir']);
+$tanggalBerangkat = $_POST['tanggalBerangkat'];
+$tanggalBerakhir = $_POST['tanggalBerakhir'];
 
 foreach($nip as $list) {
 	$sql = "SELECT * FROM jadwal_dinas WHERE nip='$list'";
 	$query = $conn->query($sql);
+	$inpBerangkat = convertMonth($tanggalBerangkat);
+	$inpPulang = convertMonth($tanggalBerakhir);
 	$inpBerangkat = strtotime($tanggalBerangkat);
 	$inpPulang = strtotime($tanggalBerakhir);
 	$crash = 0;
@@ -39,9 +41,6 @@ foreach($nip as $list) {
 	if($crash > 0) {
 		// header('location:../index.php?posisi=jadwal&status=gagal');
 	} else {
-		$tanggalBerangkat = convertMonth($tanggalBerangkat, 1);
-		$tanggalBerakhir = convertMonth($tanggalBerakhir,1);
-
 		$sql = "INSERT INTO jadwal_dinas(nip, tanggalBerangkat, tanggalBerakhir) VALUES(?, ?, ?)";
 		$prepared = $conn->prepare($sql);
         $prepared->bind_param("sss", $list, $tanggalBerangkat, $tanggalBerakhir);
