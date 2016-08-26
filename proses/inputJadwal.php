@@ -26,12 +26,14 @@ foreach($nip as $list) {
 				$crash++;
 			}
 		} else {
-			if($inpBerangkat != $dbPulang && $inpBerangkat != $dbBerangkat) {
-				if($inpPulang >= $dbPulang) {
-					$crash++;
-				} else {
+			if($inpBerangkat != $dbPulang) {
+				if($inpPulang <= $dbPulang) {
+                    $crash++;
+                } else if($inpBerangkat != $dbBerangkat) {
 
-				}
+                } else {
+                    $crash++;
+                }
 			} else {
 				$crash++;
 			}
