@@ -14,6 +14,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/Chart.min.js"></script>
     <script src="js/jquery-ui.min.js"></script>
+    <script src="js/templatemo_script.js"></script>
 
     <!--
     Dashboard Template
@@ -208,7 +209,6 @@
     </footer>
 </div>
 
-<script src="js/templatemo_script.js"></script>
 <script type="text/javascript">
   var type = "<?php echo (isset($_GET['posisi']) ? $_GET['posisi'] : false) ?>"
   if(type == false) {

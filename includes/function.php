@@ -61,3 +61,11 @@ function getPergub($select = "*") {
 	return $result;
 }
 
+function getJadwal($select = "*") {
+	global $conn;
+	$select = $conn->real_escape_string($select);
+
+	$sql = "SELECT " . $select . " FROM jadwal_dinas";
+	$result = $conn->query($sql);
+	return $result;
+}

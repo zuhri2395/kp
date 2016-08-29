@@ -1,6 +1,10 @@
 <?php
 include_once 'includes/koneksi.php';
 include_once 'includes/function.php';
+
+$sql = "SELECT DISTINCT tanggalBerangkat FROM jadwal_dinas";
+$stmt = $conn->query($sql);
+
 ?>
 
 <div class="templatemo-content-wrapper">
@@ -76,10 +80,12 @@ include_once 'includes/function.php';
 							<label for="tanggalDinas" class="control-label">Tanggal Perjalanan Dinas</label>
 							<select class="form-control margin-bottom-15" name="tanggalDinas" id="tanggalDinas" required>
 								<option value="">Pilih Tanggal Perjalanan Dinas</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
+								<?php
+									$result = getJadwal("DISTINCT tanggalBerangkat, tanggalBerakhir");
+									while($row = $result->fetch_object()) {
+										echo "<option value='" . $row->tanggalBerangkat . "-" . $row->tanggalBerakhir . "'>" . $row->tanggalBerangkat . " - " . $row->tanggalBerakhir . "</option>";
+									}
+								?>
 							</select>
 						</div>
 
@@ -87,10 +93,6 @@ include_once 'includes/function.php';
 							<label for="jumlahPegawai" class="control-label">Jumlah Pegawai</label>
 							<select class="form-control margin-bottom-15" id="jumlahPegawai" required>
 								<option value="">Pilih Jumlah Pegawai</option>
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
 							</select>
 						</div>
 					</div>
@@ -99,24 +101,14 @@ include_once 'includes/function.php';
 							<label for="pegawai1" class="control-label">Pegawai 1</label>
 							<select class="form-control margin-bottom-15" name="nip1" id="pegawai1" required>
 								<option value="">Pilih NIP Pegawai</option>
-								<?php
-									$result = getPegawai("nip, nama");
-									while($row = $result->fetch_object()) {
-										echo "<option value='" . $row->nip . "'>" . $row->nip . " - " . $row->nama . "</option>";
-									}
-								?>
+								
 							</select>
 						</div>
 						<div class="col-md-6 margin-bottom-15">
 							<label for="pegawai2" class="control-label">Pegawai 2</label>
 							<select class="form-control margin-bottom-15" name="nip2" id="pegawai2" required>
 								<option value="">Pilih NIP Pegawai</option>
-								<?php
-									$result = getPegawai("nip, nama");
-									while($row = $result->fetch_object()) {
-										echo "<option value='" . $row->nip . "'>" . $row->nip . " - " . $row->nama . "</option>";
-									}
-								?>
+								
 							</select>
 						</div>
 					</div>
@@ -126,24 +118,14 @@ include_once 'includes/function.php';
 							<label for="pegawai3" class="control-label">Pegawai 3</label>
 							<select class="form-control margin-bottom-15" name="nip3" id="pegawai3" required>
 								<option value="">Pilih NIP Pegawai</option>
-								<?php
-									$result = getPegawai("nip, nama");
-									while($row = $result->fetch_object()) {
-										echo "<option value='" . $row->nip . "'>" . $row->nip . " - " . $row->nama . "</option>";
-									}
-								?>
+								
 							</select>
 						</div>
 						<div class="col-md-6 margin-bottom-15">
 							<label for="pegawai4" class="control-label">Pegawai 4</label>
 							<select class="form-control margin-bottom-15" name="nip4" id="pegawai4" required>
 								<option value="">Pilih NIP Pegawai</option>
-								<?php
-									$result = getPegawai("nip, nama");
-									while($row = $result->fetch_object()) {
-										echo "<option value='" . $row->nip . "'>" . $row->nip . " - " . $row->nama . "</option>";
-									}
-								?>
+								
 							</select>
 						</div>
 					</div>
@@ -207,5 +189,43 @@ include_once 'includes/function.php';
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+var tanggal = {};
+<?php
+	while($berangkat = $stmt->fetch_object()) {
+		$tglBerangkat = $berangkat->tanggalBerangkat;
+		echo "tanggal['" . $tglBerangkat . "'] = {};";
+		$sql = "SELECT DISTINCT tanggalBerakhir FROM jadwal_dinas WHERE tanggalBerangkat='$berangkat->tanggalBerangkat'";
+		$query = $conn->query($sql);
+		while($berakhir = $query->fetch_object()) {
+			$tglBerakhir = $berakhir->tanggalBerakhir;
+			echo "var akhir = {};";
+			echo "tanggal['" . $tglBerangkat . "']['" . $tglBerakhir . "'] = {};";
+			// echo "pegawai = [];";
+			$sql = "SELECT * FROM jadwal_dinas WHERE tanggalBerangkat='$tglBerangkat' AND tanggalBerakhir='$tglBerakhir'";
+			$query2 = $conn->query($sql);
+			$idx = 0;
+			$pegawai = array();
+			while($row = $query2->fetch_object()) {
+				echo "tanggal['" . $tglBerangkat . "']['" . $tglBerakhir . "'].pegawai" . $idx++ . " = '" . $row->nip . "';";
+			}
 
-<?php //} ?>
+		}
+	}
+?>
+
+$(document).ready(function() {
+	// $('#tanggalDinas').click()
+	$('#tanggalDinas').on("change", function() {
+		var value = $(this).val();
+		value = value.split("-");
+		tanggalBerangkat = value[0];
+		tanggalBerakhir = value[1];
+		var pegawai = tanggal[tanggalBerangkat][tanggalBerakhir];
+		for(var i in pegawai) {
+			$('#pegawai1, #pegawai2, #pegawai3, #pegawai4').append("<option value='" + pegawai[i] + "'>" + pegawai[i] + "</option");
+		}
+	});
+})
+
+</script>

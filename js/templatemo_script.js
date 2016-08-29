@@ -1,5 +1,15 @@
 /* Credit: http://www.templatemo.com */
 
+function count(object) {
+	var count = 0;
+	for(var i in object) {
+		if(object.hasOwnProperty(i)) {
+			count++;
+		}
+	}
+	return count;
+}
+
 $(document).ready(function() {     
 
 	$.datepicker.setDefaults({
