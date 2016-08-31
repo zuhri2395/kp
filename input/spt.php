@@ -96,6 +96,7 @@ $stmt = $conn->query($sql);
 							</select>
 						</div>
 					</div>
+
 					<div class="row">
 						<div class="col-md-6 margin-bottom-15">
 							<label for="pegawai1" class="control-label">Pegawai 1</label>
@@ -190,46 +191,83 @@ $stmt = $conn->query($sql);
 	</div>
 </div>
 <script type="text/javascript">
-var tanggal = {};
-<?php
-	while($berangkat = $stmt->fetch_object()) {
-		$tglBerangkat = $berangkat->tanggalBerangkat;
-		echo "tanggal['" . $tglBerangkat . "'] = {};";
-		$sql = "SELECT DISTINCT tanggalBerakhir FROM jadwal_dinas WHERE tanggalBerangkat='$berangkat->tanggalBerangkat'";
-		$query = $conn->query($sql);
-		while($berakhir = $query->fetch_object()) {
-			$tglBerakhir = $berakhir->tanggalBerakhir;
-			echo "var akhir = {};";
-			echo "tanggal['" . $tglBerangkat . "']['" . $tglBerakhir . "'] = {};";
-			// echo "pegawai = [];";
-			$sql = "SELECT * FROM jadwal_dinas WHERE tanggalBerangkat='$tglBerangkat' AND tanggalBerakhir='$tglBerakhir'";
-			$query2 = $conn->query($sql);
-			$idx = 0;
-			$pegawai = array();
-			while($row = $query2->fetch_object()) {
-				$sql = "SELECT nama FROM pegawai WHERE nip='$row->nip'";
-				$query3 = $conn->query($sql);
-				$nama = $query3->fetch_object();
-				echo "tanggal['" . $tglBerangkat . "']['" . $tglBerakhir . "'].pegawai" . $idx++ . " = '" . $row->nip . " - " . $nama->nama . "';";
-			}
-
-		}
-	}
-?>
-
 $(document).ready(function() {
+	// $('#tanggalDinas').on("change", function() {
+	// 	var value = $(this).val();
+	// 	value = value.split("-");
+	// 	tanggalBerangkat = value[0];
+	// 	tanggalBerakhir = value[1];
+	// 	var pegawai = tanggal[tanggalBerangkat][tanggalBerakhir];
+	// 	$('#pegawai1, #pegawai2, #pegawai3, #pegawai4').find("option").remove();
+	// 	$('#pegawai1, #pegawai2, #pegawai3, #pegawai4').append("<option value=''>Pilih NIP Pegawai</option");
+	// 	for(var i in pegawai) {
+	// 		$('#pegawai1, #pegawai2, #pegawai3, #pegawai4').append("<option value='" + pegawai[i] + "'>" + pegawai[i] + "</option");
+	// 	}
+	// });
+
+	var tanggal = {};
+	<?php
+		while($berangkat = $stmt->fetch_object()) {
+			$tglBerangkat = $berangkat->tanggalBerangkat;
+			echo "tanggal['" . $tglBerangkat . "'] = {};";
+			$sql = "SELECT DISTINCT tanggalBerakhir FROM jadwal_dinas WHERE tanggalBerangkat='$berangkat->tanggalBerangkat'";
+			$query = $conn->query($sql);
+			while($berakhir = $query->fetch_object()) {
+				$tglBerakhir = $berakhir->tanggalBerakhir;
+				echo "var akhir = {};";
+				echo "tanggal['" . $tglBerangkat . "']['" . $tglBerakhir . "'] = {};";
+				$sql = "SELECT * FROM jadwal_dinas WHERE tanggalBerangkat='$tglBerangkat' AND tanggalBerakhir='$tglBerakhir'";
+				$query2 = $conn->query($sql);
+				$idx = 0;
+				$pegawai = array();
+				while($row = $query2->fetch_object()) {
+					$sql = "SELECT nama FROM pegawai WHERE nip='$row->nip'";
+					$query3 = $conn->query($sql);
+					$nama = $query3->fetch_object();
+					echo "tanggal['" . $tglBerangkat . "']['" . $tglBerakhir . "'].pegawai" . $idx++ . " = '" . $row->nip . " - " . $nama->nama . "';";
+				}
+
+			}
+		}
+	?>
+
+	var pegawai;
+
 	$('#tanggalDinas').on("change", function() {
 		var value = $(this).val();
 		value = value.split("-");
-		tanggalBerangkat = value[0];
-		tanggalBerakhir = value[1];
-		var pegawai = tanggal[tanggalBerangkat][tanggalBerakhir];
-		$('#pegawai1, #pegawai2, #pegawai3, #pegawai4').find("option").remove();
-		$('#pegawai1, #pegawai2, #pegawai3, #pegawai4').append("<option value=''>Pilih NIP Pegawai</option");
-		for(var i in pegawai) {
-			$('#pegawai1, #pegawai2, #pegawai3, #pegawai4').append("<option value='" + pegawai[i] + "'>" + pegawai[i] + "</option");
+		var tanggalBerangkat = value[0];
+		var tanggalBerakhir = value[1];
+		pegawai = tanggal[tanggalBerangkat][tanggalBerakhir];
+		var count = size(pegawai);
+		$('#jumlahPegawai').empty();
+		$('#jumlahPegawai').append("<option value=''>Pilih Jumlah Pegawai</option>");
+		for(var i = 1; i <= count; i++) {
+			// var $pegawai = $('#pegawai' + i).find("option");
+			$('#jumlahPegawai').append("<option value='" + i + "'>" + i + "</option");
+			// $pegawai.empty();
+			// $pegawai.append("<option value=''>Pilih NIP Pegawai</option");
+
+			// for(var j in pegawai) {
+			// 	$pegawai.append("<option value='" + pegawai[j] + "'>" + pegawai[i] + "</option");
+			// }
+		};
+	});
+
+	$('#jumlahPegawai').on("change", function() {
+		var value = $(this).val();
+		for(var i = 1; i <= value; i++) {
+			var listPegawai = $('#pegawai' + i);
+			listPegawai.empty();
+			listPegawai.append("<option value=''>Pilih NIP Pegawai</option");
+			for(var j in pegawai) {
+				var nip = pegawai[j];
+				nip = nip.split(" - ");
+				console.log(nip);
+				listPegawai.append("<option value='" + nip[0] + "'>" + pegawai[j] + "</option");
+			}
 		}
 	});
-})
+});
 
 </script>

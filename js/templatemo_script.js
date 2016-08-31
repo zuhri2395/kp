@@ -1,6 +1,6 @@
 /* Credit: http://www.templatemo.com */
 
-function count(object) {
+function size(object) {
 	var count = 0;
 	for(var i in object) {
 		if(object.hasOwnProperty(i)) {
