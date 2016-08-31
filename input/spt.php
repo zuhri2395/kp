@@ -218,7 +218,6 @@ var tanggal = {};
 ?>
 
 $(document).ready(function() {
-	// $('#tanggalDinas').click()
 	$('#tanggalDinas').on("change", function() {
 		var value = $(this).val();
 		value = value.split("-");

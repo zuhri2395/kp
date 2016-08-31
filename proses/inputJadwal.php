@@ -19,26 +19,6 @@ foreach($nip as $list) {
 		$dbBerangkat = strtotime(convertMonth($row->tanggalBerangkat));
 		$dbPulang = strtotime(convertMonth($row->tanggalBerakhir));
 
-		// if($inpBerangkat < $dbBerangkat) {
-		// 	if($inpPulang < $dbBerangkat) {
-				
-		// 	} else {
-		// 		$crash++;
-		// 	}
-		// } else {
-		// 	if($inpBerangkat != $dbPulang) {
-		// 		if($inpPulang <= $dbPulang) {
-  //                   $crash++;
-  //               } else if($inpBerangkat != $dbBerangkat) {
-
-  //               } else {
-  //                   $crash++;
-  //               }
-		// 	} else {
-		// 		$crash++;
-		// 	}
-		// }
-
 		if(($inpBerangkat == $dbBerangkat) || ($inpBerangkat == $dbPulang) || ($inpPulang == $dbPulang) || ($inpPulang == $dbBerangkat )) {
 			$crash++;
 		} else if(($inpBerangkat > $dbBerangkat) && ($inpBerangkat < $dbPulang)) {
