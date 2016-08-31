@@ -41,7 +41,9 @@ foreach($nip as $list) {
 
 		if(($inpBerangkat == $dbBerangkat) || ($inpBerangkat == $dbPulang) || ($inpPulang == $dbPulang) || ($inpPulang || $dbBerangkat )) {
 			$crash++;
-		} else if(($inpBerangkat > $dbBerangkat) || ($inpPulang < $dbPulang)) {
+		} else if(($inpBerangkat > $dbBerangkat) && ($inpBerangkat < $dbPulang)) {
+			$crash++;
+		} else if(($inpPulang > $dbBerangkat) && ($inpPulang < $dbPulang)) {
 			$crash++;
 		}
 	}
