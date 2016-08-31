@@ -39,7 +39,7 @@ foreach($nip as $list) {
 		// 	}
 		// }
 
-		if(($inpBerangkat == $dbBerangkat) || ($inpBerangkat == $dbPulang) || ($inpPulang == $dbPulang) || ($inpPulang || $dbBerangkat )) {
+		if(($inpBerangkat == $dbBerangkat) || ($inpBerangkat == $dbPulang) || ($inpPulang == $dbPulang) || ($inpPulang == $dbBerangkat )) {
 			$crash++;
 		} else if(($inpBerangkat > $dbBerangkat) && ($inpBerangkat < $dbPulang)) {
 			$crash++;
