@@ -207,7 +207,10 @@ var tanggal = {};
 			$idx = 0;
 			$pegawai = array();
 			while($row = $query2->fetch_object()) {
-				echo "tanggal['" . $tglBerangkat . "']['" . $tglBerakhir . "'].pegawai" . $idx++ . " = '" . $row->nip . "';";
+				$sql = "SELECT nama FROM pegawai WHERE nip='$row->nip'";
+				$query3 = $conn->query($sql);
+				$nama = $query3->fetch_object();
+				echo "tanggal['" . $tglBerangkat . "']['" . $tglBerakhir . "'].pegawai" . $idx++ . " = '" . $row->nip . " - " . $nama->nama . "';";
 			}
 
 		}
@@ -222,6 +225,8 @@ $(document).ready(function() {
 		tanggalBerangkat = value[0];
 		tanggalBerakhir = value[1];
 		var pegawai = tanggal[tanggalBerangkat][tanggalBerakhir];
+		$('#pegawai1, #pegawai2, #pegawai3, #pegawai4').find("option").remove();
+		$('#pegawai1, #pegawai2, #pegawai3, #pegawai4').append("<option value=''>Pilih NIP Pegawai</option");
 		for(var i in pegawai) {
 			$('#pegawai1, #pegawai2, #pegawai3, #pegawai4').append("<option value='" + pegawai[i] + "'>" + pegawai[i] + "</option");
 		}
