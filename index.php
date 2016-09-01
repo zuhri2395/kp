@@ -116,7 +116,7 @@
         require_once 'view/spt.php';
       } else if(($_GET['posisi'] == "spt") && ($_GET['type'] == "insert")) {
         require_once 'input/spt.php';
-      } else if(($_GET['posisi'] == "spt") && ($_GET['type'] == "edit") && (isset($_GET['nospt']))) {
+      } else if(($_GET['posisi'] == "spt") && ($_GET['type'] == "edit") && (isset($_GET['noSPT']))) {
         require_once 'edit/spt.php';
       }
 
@@ -152,7 +152,7 @@
         require_once 'view/rekening.php';
       } else if(($_GET['posisi'] == "rekening") && ($_GET['type'] == "insert")) {
         require_once 'input/rekening.php';
-      } else if(($_GET['posisi'] == "rekening") && ($_GET['type'] == "edit") && (isset($_GET['nomorRekening']))) {
+      } else if(($_GET['posisi'] == "rekening") && ($_GET['type'] == "edit") && (isset($_GET['noRekening']))) {
         require_once 'edit/rekening.php';
       }
 

@@ -47,7 +47,7 @@ include_once 'includes/function.php';
 					<div class="row" hidden id="pegawai1">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="pegawai1" class="control-label">Pegawai 1</label>
-							<select name="nip[]" id="pegawai1" class="form-control margin-bottom-15" disabled>
+							<select name="nip[]" id="nip1" class="form-control margin-bottom-15" disabled>
 								<option value="">Pilih NIP Pegawai</option>
 								<?php
 									$result = getPegawai("nip, nama");
@@ -62,7 +62,7 @@ include_once 'includes/function.php';
 					<div class="row" hidden id="pegawai2">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="pegawai2" class="control-label">Pegawai 2</label>
-							<select name="nip[]" id="pegawai2" class="form-control margin-bottom-15" disabled>
+							<select name="nip[]" id="nip2" class="form-control margin-bottom-15" disabled>
 								<option value="">Pilih NIP Pegawai</option>
 								<?php
 									$result = getPegawai("nip, nama");
@@ -77,7 +77,7 @@ include_once 'includes/function.php';
 					<div class="row" hidden id="pegawai3">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="pegawai3" class="control-label">Pegawai 3</label>
-							<select name="nip[]" id="pegawai3" class="form-control margin-bottom-15" disabled>
+							<select name="nip[]" id="nip3" class="form-control margin-bottom-15" disabled>
 								<option value="">Pilih NIP Pegawai</option>
 								<?php
 									$result = getPegawai("nip, nama");
@@ -92,7 +92,7 @@ include_once 'includes/function.php';
 					<div class="row" hidden id="pegawai4">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="pegawai4" class="control-label">Pegawai 4</label>
-							<select name="nip[]" id="pegawai4" class="form-control margin-bottom-15" disabled>
+							<select name="nip[]" id="nip4" class="form-control margin-bottom-15" disabled>
 								<option value="">Pilih NIP Pegawai</option>
 								<?php
 									$result = getPegawai("nip, nama");

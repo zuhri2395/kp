@@ -20,12 +20,12 @@ $stmt = $conn->query($sql);
 		<p class="margin-bottom-15">Form Pengisian Surat Perintah Tugas</p>
 		<div class="row">
 			<div class="col-md-12">
-				<form role="form" id="templatemo-preferences-form">
+				<form role="form" id="templatemo-preferences-form" method="POST" action="proses/inputSPT.php">
 					<!-- No Surat Section Start-->
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="noSPT" class="control-label">Nomor Surat Perintah Tugas</label>
-							<input type="text" id="noSPT" class="form-control" name="nomorSPT" placeholder="No Surat Perintah Tugas" required>
+							<input type="text" id="noSPT" class="form-control" name="noSPT" placeholder="No Surat Perintah Tugas" required>
 						</div>
 					</div>
 
@@ -50,8 +50,8 @@ $stmt = $conn->query($sql);
 
 						<!-- Nomor Dokumen Penyedia Anggaran -->
 						<div class="col-md-6 margin-bottom-15">
-							<label for="nomorDPA" class="control-label">Nomor Dokumen Penyedia Anggaran</label>
-							<select class="form-control margin-bottom-15" name="nomorDPA" id="nomorDPA" required>
+							<label for="noDPA" class="control-label">Nomor Dokumen Penyedia Anggaran</label>
+							<select class="form-control margin-bottom-15" name="noDPA" id="noDPA" required>
 								<option value="">Pilih No DPA-SKPD</option>
 								<?php
 									$result = getDPA("noDPA, kegiatan");
@@ -66,8 +66,8 @@ $stmt = $conn->query($sql);
 					<div class="row">
 						<!-- Nomor SPD -->
 						<div class="col-md-12 margin-bottom-15">
-							<label for="nomorSPD" class="control-label">No SPD</label>
-							<input type="text" class="form-control" name="nomorSPD" placeholder="Nomor SPD" required>
+							<label for="noSPD" class="control-label">No SPD</label>
+							<input type="text" class="form-control" id="noSPD" name="noSPD" placeholder="Nomor SPD" required>
 						</div>
 					</div>
 
@@ -98,16 +98,16 @@ $stmt = $conn->query($sql);
 					</div>
 
 					<div class="row">
-						<div class="col-md-6 margin-bottom-15">
+						<div class="col-md-6 margin-bottom-15" id="pegawai1" hidden required>
 							<label for="pegawai1" class="control-label">Pegawai 1</label>
-							<select class="form-control margin-bottom-15" name="nip1" id="pegawai1" required>
+							<select class="form-control margin-bottom-15" name="nip[]" id="optPegawai1" required disabled>
 								<option value="">Pilih NIP Pegawai</option>
 								
 							</select>
 						</div>
-						<div class="col-md-6 margin-bottom-15">
+						<div class="col-md-6 margin-bottom-15" id="pegawai2" hidden required>
 							<label for="pegawai2" class="control-label">Pegawai 2</label>
-							<select class="form-control margin-bottom-15" name="nip2" id="pegawai2" required>
+							<select class="form-control margin-bottom-15" name="nip[]" id="optPegawai2" required disabled>
 								<option value="">Pilih NIP Pegawai</option>
 								
 							</select>
@@ -115,16 +115,16 @@ $stmt = $conn->query($sql);
 					</div>
 
 					<div class="row">
-						<div class="col-md-6 margin-bottom-15">
+						<div class="col-md-6 margin-bottom-15" id="pegawai3" hidden required>
 							<label for="pegawai3" class="control-label">Pegawai 3</label>
-							<select class="form-control margin-bottom-15" name="nip3" id="pegawai3" required>
+							<select class="form-control margin-bottom-15" name="nip[]" id="optPegawai3" required disabled>
 								<option value="">Pilih NIP Pegawai</option>
 								
 							</select>
 						</div>
-						<div class="col-md-6 margin-bottom-15">
+						<div class="col-md-6 margin-bottom-15" id="pegawai4" hidden required>
 							<label for="pegawai4" class="control-label">Pegawai 4</label>
-							<select class="form-control margin-bottom-15" name="nip4" id="pegawai4" required>
+							<select class="form-control margin-bottom-15" name="nip[]" id="optPegawai4" required disabled>
 								<option value="">Pilih NIP Pegawai</option>
 								
 							</select>
@@ -149,8 +149,8 @@ $stmt = $conn->query($sql);
 						</div>
 						
 						<div class="col-md-6 margin-bottom-15">
-							<label for="dikeluarkan" class="control-label">Dikeluarkan di Kota</label>
-							<input class="form-control" type="text" name="dikeluarkan" id="dikeluarkan" placeholder="Dikeluarkan di Kota" required>
+							<label for="kotaSPT" class="control-label">Dikeluarkan di Kota</label>
+							<input class="form-control" type="text" name="kotaSPT" id="kotaSPT" placeholder="Dikeluarkan di Kota" required>
 						</div>
 					</div>
 
@@ -165,7 +165,7 @@ $stmt = $conn->query($sql);
 						</div>
 
 						<div class="col-md-6 margin-bottom-15">
-							<label for="penandatanganSPT" class="control-label">NIP Penandatangan</label>
+							<label for="penandatanganSPT" class="control-label">NIP Penandatangan SPT</label>
 							<select class="form-control" name="penandatanganSPT" id="penandatanganSPT" required>
 								<option value="">Pilih NIP Pegawai</option>
 								<?php
@@ -192,18 +192,21 @@ $stmt = $conn->query($sql);
 </div>
 <script type="text/javascript">
 $(document).ready(function() {
-	// $('#tanggalDinas').on("change", function() {
-	// 	var value = $(this).val();
-	// 	value = value.split("-");
-	// 	tanggalBerangkat = value[0];
-	// 	tanggalBerakhir = value[1];
-	// 	var pegawai = tanggal[tanggalBerangkat][tanggalBerakhir];
-	// 	$('#pegawai1, #pegawai2, #pegawai3, #pegawai4').find("option").remove();
-	// 	$('#pegawai1, #pegawai2, #pegawai3, #pegawai4').append("<option value=''>Pilih NIP Pegawai</option");
-	// 	for(var i in pegawai) {
-	// 		$('#pegawai1, #pegawai2, #pegawai3, #pegawai4').append("<option value='" + pegawai[i] + "'>" + pegawai[i] + "</option");
-	// 	}
-	// });
+	$('#jumlahPegawai').on("change", function() {
+		var jumlah = $(this).val();
+
+		for(var i = 1; i <= jumlah; i++) {
+			$('#pegawai' + i).show();
+			$('#pegawai' + i).find('*').removeAttr('disabled');
+			$('#pegawai' + i).find('*').attr('required', true);
+		}
+
+		for(var j = 4; j > jumlah; j--) {
+			$('#pegawai' + j).hide();
+			$('#pegawai' + i).find('*').attr('disabled', true);
+			$('#pegawai' + i).find('*').attr('required', false);
+		}
+	});
 
 	var tanggal = {};
 	<?php
@@ -243,27 +246,23 @@ $(document).ready(function() {
 		$('#jumlahPegawai').empty();
 		$('#jumlahPegawai').append("<option value=''>Pilih Jumlah Pegawai</option>");
 		for(var i = 1; i <= count; i++) {
-			// var $pegawai = $('#pegawai' + i).find("option");
-			$('#jumlahPegawai').append("<option value='" + i + "'>" + i + "</option");
-			// $pegawai.empty();
-			// $pegawai.append("<option value=''>Pilih NIP Pegawai</option");
-
-			// for(var j in pegawai) {
-			// 	$pegawai.append("<option value='" + pegawai[j] + "'>" + pegawai[i] + "</option");
-			// }
+			if(count > 5) {
+				break;
+			} else {
+				$('#jumlahPegawai').append("<option value='" + i + "'>" + i + "</option");
+			}
 		};
 	});
 
 	$('#jumlahPegawai').on("change", function() {
 		var value = $(this).val();
 		for(var i = 1; i <= value; i++) {
-			var listPegawai = $('#pegawai' + i);
+			var listPegawai = $('#optPegawai' + i);
 			listPegawai.empty();
 			listPegawai.append("<option value=''>Pilih NIP Pegawai</option");
 			for(var j in pegawai) {
 				var nip = pegawai[j];
 				nip = nip.split(" - ");
-				console.log(nip);
 				listPegawai.append("<option value='" + nip[0] + "'>" + pegawai[j] + "</option");
 			}
 		}
