@@ -14,43 +14,60 @@
 			<div class="col-md-12">
 				<div class="table-responsive">
 					<h4 class="margin-bottom-15">Daftar Surat Perintah Tugas</h4>
-					<table class="table table-striped table-hover table-bordered">
+					<table class="table table-striped table-hover table-bordered text-center">
 						<thead>
 							<tr>
-								<th>No Surat</th>
-								<th>Tanggal Keluar SPT</th>
-								<th>No DPA</th>
-								<th>No SPD</th>
-								<th>NIP Pegawai</th>
-								<th>Keterangan SPT</th>
-								<th>Penandatangan</th>
-								<th>Aksi</th>
+								<th class="text-center">No Surat</th>
+								<th class="text-center">Tanggal Keluar SPT</th>
+								<th class="text-center">No DPA</th>
+								<th class="text-center">No SPD</th>
+								<th class="text-center">NIP Pegawai</th>
+								<th class="text-center">Keterangan SPT</th>
+								<th class="text-center">Lokasi SPT dikeluarkan</th>
+								<th class="text-center">Penandatangan</th>
+								<th class="text-center">Aksi</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>1</td>
-								<td>2</td>
-								<td>3</td>
-								<td>4</td>
-								<td>5</td>
-								<td>6</td>
-								<td>7</td>
-								<td>
-									<div class="btn-group">
-										<button type="button" class="btn btn-info">Aksi</button>
-										<button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown">
-											<span class="caret"></span>
-											<span class="sr-only">Toggle Dropdown</span>
-										</button>
-										<ul class="dropdown-menu" role="menu">
-											<li><a href="#">View</a></li>
-											<li><a href="#">Edit</a></li>
-											<li><a href="#">Delete</a></li>
-										</ul>
-									</div>
-								</td>
-							</tr>
+						<?php
+							include_once 'includes/koneksi.php';
+							$sql = "SELECT * FROM spt";
+							$result = $conn->query($sql);
+							while($row = $result->fetch_object()) {
+								$decodeNIP = json_decode($row->nip);
+								echo "<tr>";
+								echo "<td>" . $row->noSPT . "</td>";
+								echo "<td>" . $row->tanggalSPT . "</td>";
+								echo "<td>" . $row->noDPA . "</td>";
+								echo "<td>" . $row->noSPD . "</td>";
+								echo "<td>";
+								foreach($decodeNIP as $nip) {
+									echo $nip;
+									echo "<br>";
+								}
+								echo "</td>";
+								echo "<td>" . $row->keterangan . "</td>";
+								echo "<td>" . $row->kotaSPT . "</td>";
+								echo "<td>" . $row->penandatanganSPT . "</td>";
+								echo "<td>";
+								echo "<div class='btn-group'>";
+								echo "<button type='button' class='btn btn-info dropdown-toggle' data-toggle='dropdown'>Aksi ";
+								echo "<span class='caret'></span>";
+								echo "<span class='sr-only'>Toggle Dropdown</span>";
+								echo "</button>";
+								echo "<ul class='dropdown-menu' roles='menu'>";
+								echo "<li><a href='index.php?posisi=spt&type=edit&noSPT=" . $row->noSPT . "'>Edit</a></li>";
+								echo "<li>";
+								echo "<form action='proses/deleteSPT.php' method='POST'>";
+								echo "<input type='hidden' name='noSPT' value='" . $row->noSPT . "'/>";
+								echo "<button class='tombol-drop' type='submit'>Delete</button>";
+								echo "</form>";
+								echo "</li>";
+								echo "</ul>";
+								echo "</div>";
+								echo "</tr>";
+							}
+						?>
 						</tbody>
 					</table>
 				</div>
