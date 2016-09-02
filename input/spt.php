@@ -91,7 +91,7 @@ $stmt = $conn->query($sql);
 
 						<div class="col-md-6 margin-bottom-15">
 							<label for="jumlahPegawai" class="control-label">Jumlah Pegawai</label>
-							<select class="form-control margin-bottom-15" id="jumlahPegawai" required>
+							<select class="form-control margin-bottom-15" id="jumlahPegawai" disabled>
 								<option value="">Pilih Jumlah Pegawai</option>
 							</select>
 						</div>
@@ -252,6 +252,10 @@ $(document).ready(function() {
 				$('#jumlahPegawai').append("<option value='" + i + "'>" + i + "</option");
 			}
 		};
+
+		$('#jumlahPegawai').val("");
+		$('#jumlahPegawai').removeAttr("disabled");
+		$('#jumlahPegawai').trigger("change");
 	});
 
 	$('#jumlahPegawai').on("change", function() {
