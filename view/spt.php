@@ -14,7 +14,7 @@
 			<div class="col-md-12">
 				<div class="table-responsive">
 					<h4 class="margin-bottom-15">Daftar Surat Perintah Tugas</h4>
-					<table class="table table-striped table-hover table-bordered text-center">
+					<table class="table table-striped table-hover table-bordered table-wrap text-center">
 						<thead>
 							<tr>
 								<th class="text-center">No Surat</th>
