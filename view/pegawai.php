@@ -29,8 +29,10 @@
 						<tbody>
 						<?php
 							include_once 'includes/koneksi.php';
+							include_once 'includes/function.php';
+							
 							$sql = "SELECT * FROM pegawai";
-							$result = $conn->query($sql);
+							$result = getPegawai();
 							while($row = $result->fetch_object()) {
 								echo "<tr>";
 								echo "<td>" . $row->nip . "</td>";

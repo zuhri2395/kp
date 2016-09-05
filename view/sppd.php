@@ -29,7 +29,46 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
+							<?php
+							include_once 'includes/koneksi.php';
+							include_once 'includes/function.php';
+
+							$sppd = getSPPD();
+							while($row = $sppd->fetch_object()) {
+								@$sql = "SELECT tanggalDinas FROM spt WHERE noSPT='$row->noSPT'";
+								@$tgl = $conn->query($sql);
+								@$tgl = $tgl->fetch_object();
+								@$tgl = explode("-", $tgl->tanggalDinas);
+
+								echo "<tr>";
+								echo "<td>" . $row->noSPPD . "</td>";
+								echo "<td>" . $row->pelaksanaDinas . "</td>";
+								echo "<td>" . $row->transportasi . "</td>";
+								echo "<td>" . $row->tempatBerangkat . "</td>";
+								echo "<td>" . $row->tempatTujuan . "</td>";
+								echo "<td>" . $tgl[0] . "</td>";
+								echo "<td>" . $tgl[1] . "</td>";
+								echo "<td>" . $row->noSPT . "</td>";
+								echo "<td>";
+								echo "<div class='btn-group'>";
+								echo "<button type='button' class='btn btn-info dropdown-toggle' data-toggle='dropdown'>Aksi ";
+								echo "<span class='caret'></span>";
+								echo "<span class='sr-only'>Toggle Dropdown</span>";
+								echo "</button>";
+								echo "<ul class='dropdown-menu' roles='menu'>";
+								echo "<li><a href='index.php?posisi=sppd&type=edit&noSPPD=" . $row->noSPPD . "'>Edit</a></li>";
+								echo "<li>";
+								echo "<form action='proses/deleteSPPD.php' method='POST'>";
+								echo "<input type='hidden' name='noSPPD' value='" . $row->noSPPD . "'/>";
+								echo "<button class='tombol-drop' type='submit'>Delete</button>";
+								echo "</form>";
+								echo "</li>";
+								echo "</ul>";
+								echo "</div>";
+								echo "</tr>";
+							}
+							?>
+							<!-- <tr>
 								<td>1</td>
 								<td>1</td>
 								<td>1</td>
@@ -39,7 +78,7 @@
 								<td>1</td>
 								<td>1</td>
 								<td>1</td>
-							</tr>
+							</tr> -->
 						</tbody>
 					</table>
 				</div>

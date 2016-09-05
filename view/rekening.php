@@ -25,8 +25,9 @@
 						<tbody>
 							<?php
 							include_once 'includes/koneksi.php';
-							$sql = "SELECT * FROM rekening";
-							$result = $conn->query($sql);
+							include_once 'includes/function.php';
+
+							$result = getRekening();
 							while($row = $result->fetch_object()) {
 								echo "<tr>";
 								echo "<td>" . $row->noRekening . "</td>";

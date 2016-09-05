@@ -78,3 +78,12 @@ function getSPT($select = "*") {
 	$result = $conn->query($sql);
 	return $result;
 }
+
+function getSPPD($select = "*") {
+	global $conn;
+	$select = $conn->real_escape_string($select);
+
+	$sql = "SELECT " . $select . " FROM sppd";
+	$result = $conn->query($sql);
+	return $result;
+}

@@ -28,10 +28,9 @@
 							<?php
 							include_once 'includes/koneksi.php';
 							include_once 'includes/function.php';
-							$sql = "SELECT * FROM jadwal_dinas";
-							$result = $conn->query($sql);
+							$result = getJadwal();
 							while($row = $result->fetch_object()) {
-								$peg = getPegawai("*");
+								$peg = getPegawai();
 								$pegawai = "";
 								while($list = $peg->fetch_object()) {
 									if($list->nip == $row->nip) {

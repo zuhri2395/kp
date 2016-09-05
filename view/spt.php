@@ -31,8 +31,9 @@
 						<tbody>
 						<?php
 							include_once 'includes/koneksi.php';
-							$sql = "SELECT * FROM spt";
-							$result = $conn->query($sql);
+							include_once 'includes/function.php';
+							
+							$result = getSPT();
 							while($row = $result->fetch_object()) {
 								$decodeNIP = json_decode($row->nip);
 								echo "<tr>";

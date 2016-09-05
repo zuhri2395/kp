@@ -125,7 +125,7 @@
         require_once 'view/sppd.php';
       } else if(($_GET['posisi'] == "sppd") && ($_GET['type'] == "insert")) {
         require_once 'input/sppd.php';
-      } else if(($_GET['posisi'] == "sppd") && ($_GET['type'] == "edit") && (isset($_GET['nosppd']))) {
+      } else if(($_GET['posisi'] == "sppd") && ($_GET['type'] == "edit") && (isset($_GET['noSPPD']))) {
         require_once 'edit/sppd.php';
       }
 

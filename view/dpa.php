@@ -26,8 +26,9 @@
 						<tbody>
 							<?php
 							include_once 'includes/koneksi.php';
-							$sql = "SELECT * FROM dpa";
-							$result = $conn->query($sql);
+							include_once 'includes/function.php';
+							
+							$result = getDPA();
 							while($row = $result->fetch_object()) {
 								echo "<tr>";
 								echo "<td>" . $row->noDPA . "</td>";
