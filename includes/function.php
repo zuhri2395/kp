@@ -69,3 +69,12 @@ function getJadwal($select = "*") {
 	$result = $conn->query($sql);
 	return $result;
 }
+
+function getSPT($select = "*") {
+	global $conn;
+	$select = $conn->real_escape_string($select);
+
+	$sql = "SELECT " . $select . " FROM spt";
+	$result = $conn->query($sql);
+	return $result;
+}

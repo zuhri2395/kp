@@ -1,3 +1,8 @@
+<?php
+include_once("includes/koneksi.php");
+include_once("includes/function.php");
+?>
+
 <div class="templatemo-content-wrapper">
 	<div class="templatemo-content">
 		<ol class="breadcrumb">
@@ -7,12 +12,12 @@
 		</ol>
 
 		<h1>
-			<b>Surat Perintah Tugas</b>
+			<b>Surat Perintah Perjalanan Dinas</b>
 		</h1>
 		<p class="margin-bottom-15">Form Pengisian Surat Perintah Perjalanan Dinas</p>
 		<div class="row">
 			<div class="col-md-12">
-				<form role="form" id="templatemo-preferences-form">
+				<form role="form" id="templatemo-preferences-form" action="proses/inputSPPD.php" method="POST">
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="noSPPD" class="control-label">Nomor Surat Perintah Perjalanan Dinas</label>
@@ -23,7 +28,15 @@
 					<div class="row">
 						<div class="col-md-12 margin-bottom-15">
 							<label for="noSPT" class="control-label">Nomor Surat Perintah Tugas</label>
-							<input type="text" id="noSPT" name="noSPT" class="form-control" placeholder="Nomor Surat Tugas" required>
+							<select class="form-control" id="noSPT" name="noSPT" required>
+								<option value="">Pilih No SPT</option>
+								<?php
+									$spt = getSPT("noSPT");
+									while($row = $spt->fetch_object()) {
+										echo "<option value='" . $row->noSPT . "'>" . $row->noSPT . "</option>";
+									}
+								?>
+							</select>
 						</div>
 					</div>
 
@@ -32,12 +45,24 @@
 							<label for="kuasaAnggaran" class="control-label">Pengguna Anggaran / Kuasa Pengguna Anggaran</label>
 							<select class="form-control" id="kuasaAnggaran" name="kuasaAnggaran" required>
 								<option value="">Pilih NIP Pegawai</option>
+								<?php
+									$result = getPegawai("nip, nama");
+									while($row = $result->fetch_object()) {
+										echo "<option value='" . $row->nip . "'>" . $row->nip . " - " . $row->nama . "</option>";
+									}
+								?>
 							</select>
 						</div>
 						<div class="col-md-6 margin-bottom-15">
 							<label for="pelaksanaDinas" class="control-label">Pegawai Pelaksana Dinas</label>
 							<select class="form-control" id="pelaksanaDinas" name="pelaksanaDinas" required>
 								<option value="">Pilih NIP Pegawai</option>
+								<?php
+									$result = getPegawai("nip, nama");
+									while($row = $result->fetch_object()) {
+										echo "<option value='" . $row->nip . "'>" . $row->nip . " - " . $row->nama . "</option>";
+									}
+								?>
 							</select>
 						</div>
 					</div>
@@ -73,6 +98,13 @@
 								<option value="dalamDaerah">Belanja Perjalanan Dinas Dalam Daerah</option>
 								<option value="luarDaerah">Belanja Perjalanan Dinas Luar Daerah</option>
 							</select>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12 margin-bottom-15">
+							<input type="submit" name="submit" value="Simpan" class="btn btn-primary">
+							<input type="reset" name="reset" value="Reset" class="btn btn-default">
 						</div>
 					</div>
 

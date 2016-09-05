@@ -14,7 +14,7 @@
 			<div class="col-md-12">
 				<div class="table-responsive">
 					<h4 class="margin-bottom-15">Daftar Surat Perintah Tugas</h4>
-					<table class="table table-striped table-hover table-bordered table-wrap text-center">
+					<table class="table table-striped table-hover table-bordered text-center">
 						<thead>
 							<tr>
 								<th class="text-center">No Surat</th>
@@ -42,13 +42,19 @@
 								echo "<td>" . $row->noSPD . "</td>";
 								echo "<td>";
 								foreach($decodeNIP as $nip) {
-									echo $nip;
+									$query = "SELECT nama FROM pegawai WHERE nip='$nip'";
+									$query = $conn->query($query);
+									$query = $query->fetch_object();
+									echo $query->nama;
 									echo "<br>";
 								}
 								echo "</td>";
 								echo "<td>" . $row->keterangan . "</td>";
 								echo "<td>" . $row->kotaSPT . "</td>";
-								echo "<td>" . $row->penandatanganSPT . "</td>";
+								$query = "SELECT nama FROM pegawai WHERE nip='$row->penandatanganSPT'";
+								$query = $conn->query($query);
+								$query = $query->fetch_object();
+								echo "<td>" . $query->nama . "</td>";
 								echo "<td>";
 								echo "<div class='btn-group'>";
 								echo "<button type='button' class='btn btn-info dropdown-toggle' data-toggle='dropdown'>Aksi ";

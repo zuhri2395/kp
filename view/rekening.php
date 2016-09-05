@@ -29,7 +29,7 @@
 							$result = $conn->query($sql);
 							while($row = $result->fetch_object()) {
 								echo "<tr>";
-								echo "<td>" . $row->nomorRekening . "</td>";
+								echo "<td>" . $row->noRekening . "</td>";
 								echo "<td>" . $row->judul . "</td>";
 								echo "<td>";
 								echo "<div class='btn-group'>";
@@ -38,10 +38,10 @@
 								echo "<span class='sr-only'>Toggle Dropdown</span>";
 								echo "</button>";
 								echo "<ul class='dropdown-menu' roles='menu'>";
-								echo "<li><a href='index.php?posisi=rekening&type=edit&nomorRekening=" . $row->nomorRekening . "'>Edit</a></li>";
+								echo "<li><a href='index.php?posisi=rekening&type=edit&nomorRekening=" . $row->noRekening . "'>Edit</a></li>";
 								echo "<li>";
 								echo "<form action='proses/deleteRekening.php' method='POST'>";
-								echo "<input type='hidden' name='nomorRekening' value='" . $row->nomorRekening . "'/>";
+								echo "<input type='hidden' name='nomorRekening' value='" . $row->noRekening . "'/>";
 								echo "<button class='tombol-drop' type='submit'>Delete</button>";
 								echo "</form>";
 								echo "</li>";
