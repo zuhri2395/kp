@@ -87,3 +87,12 @@ function getSPPD($select = "*") {
 	$result = $conn->query($sql);
 	return $result;
 }
+
+function getRBP($select = "*") {
+	global $conn;
+	$select = $conn->real_escape_string($select);
+
+	$sql = "SELECT " . $select . " FROM rincian";
+	$result = $conn->query($sql);
+	return $result;
+}

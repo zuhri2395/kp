@@ -46,8 +46,8 @@
 
 					<div class="row">
 						<div class="col-md-6 margin-bottom-15">
-							<label for="biayaBBM" class="control-label">Biaya BBM/Tiket/Transportasi</label>
-							<input type="text" name="biayaBBM" id="biayaBBM" class="form-control" placeholder="Biaya BBM/Tiket/Transportasi" required>
+							<label for="biayaTransport" class="control-label">Biaya BBM/Tiket/Transportasi</label>
+							<input type="text" name="biayaTransport" id="biayaTransport" class="form-control" placeholder="Biaya BBM/Tiket/Transportasi" required>
 						</div>
 
 						<div class="col-md-6 margin-bottom-15">

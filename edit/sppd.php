@@ -13,8 +13,8 @@ $sppd = $sppd->fetch_object();
 	<div class="templatemo-content">
 		<ol class="breadcrumb">
 			<li><a href="index.php">Dashboard</a></li>
-			<li class="active">SPPD</li>
-			<li><a href="index.php?posisi=sppd&type=insert">Input SPPD</a></li>
+			<li><a href="index.php?posisi=sppd"></a></li>
+			<li class="active">Input SPPD</li>
 		</ol>
 
 		<h1>

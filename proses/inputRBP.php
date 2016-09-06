@@ -4,7 +4,7 @@ include_once '../includes/koneksi.php';
 $noSPPD = $_POST['noSPPD'];
 $hariUangHarian = $_POST['hariUangHarian'];
 $biayaUangHarian = $_POST['biayaUangHarian'];
-$biayaBBM = $_POST['biayaBBM'];
+$biayaTransport = $_POST['biayaTransport'];
 $biayaPenginapan = $_POST['biayaPenginapan'];
 $hariSewa = $_POST['hariSewa'];
 $biayaSewa = $_POST['biayaSewa'];
@@ -15,7 +15,7 @@ $pelaksanaKegiatan = $_POST['pelaksanaKegiatan'];
 
 $sql = "INSERT INTO rincian VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $stmt = $conn->prepare($sql);
-$stmt->bind_param("sssssssssss", $noSPPD, $hariUangHarian, $biayaUangHarian, $biayaBBM, $biayaPenginapan, $hariSewa, $biayaSewa, $bendaharaPengeluaran, $penerima, $kuasaAnggaran, $pelaksanaKegiatan);
+$stmt->bind_param("sssssssssss", $noSPPD, $hariUangHarian, $biayaUangHarian, $biayaTransport, $biayaPenginapan, $hariSewa, $biayaSewa, $bendaharaPengeluaran, $penerima, $kuasaAnggaran, $pelaksanaKegiatan);
 
 if($stmt->execute()) {
 	header('location:../index.php?posisi=rbp');
