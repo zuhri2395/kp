@@ -96,3 +96,13 @@ function getRBP($select = "*") {
 	$result = $conn->query($sql);
 	return $result;
 }
+
+function retrievePegawai($nip, $select = "*") {
+	global $conn;
+	$select = $conn->real_escape_string($select);
+
+	$sql = "SELECT ". $select . " FROM pegawai WHERE nip='$nip'";
+	$result = $conn->query($sql);
+	$result = $result->fetch_object();
+	return $result;
+}

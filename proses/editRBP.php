@@ -14,7 +14,6 @@ $penerima = $_POST['penerima'];
 $kuasaAnggaran = $_POST['kuasaAnggaran'];
 $pelaksanaKegiatan = $_POST['pelaksanaKegiatan'];
 
-// $sql = "INSERT INTO rincian VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 $sql = "UPDATE rincian SET noSPPD=?, hariUangHarian=?, biayaUangHarian=?, biayaTransport=?, biayaPenginapan=?, hariSewa=?, biayaSewa=?, bendaharaPengeluaran=?, penerima=?, kuasaAnggaran=?, pelaksanaKegiatan=? WHERE no=?";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssssssssssss", $noSPPD, $hariUangHarian, $biayaUangHarian, $biayaTransport, $biayaPenginapan, $hariSewa, $biayaSewa, $bendaharaPengeluaran, $penerima, $kuasaAnggaran, $pelaksanaKegiatan, $no);
