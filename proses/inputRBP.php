@@ -1,0 +1,24 @@
+<?php
+include_once '../includes/koneksi.php';
+
+$noSPPD = $_POST['noSPPD'];
+$hariUangHarian = $_POST['hariUangHarian'];
+$biayaUangHarian = $_POST['biayaUangHarian'];
+$biayaBBM = $_POST['biayaBBM'];
+$biayaPenginapan = $_POST['biayaPenginapan'];
+$hariSewa = $_POST['hariSewa'];
+$biayaSewa = $_POST['biayaSewa'];
+$bendaharaPengeluaran = $_POST['bendaharaPengeluaran'];
+$penerima = $_POST['penerima'];
+$kuasaAnggaran = $_POST['kuasaAnggaran'];
+$pelaksanaKegiatan = $_POST['pelaksanaKegiatan'];
+
+$sql = "INSERT INTO rincian VALUES(null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+$stmt = $conn->prepare($sql);
+$stmt->bind_param("sssssssssss", $noSPPD, $hariUangHarian, $biayaUangHarian, $biayaBBM, $biayaPenginapan, $hariSewa, $biayaSewa, $bendaharaPengeluaran, $penerima, $kuasaAnggaran, $pelaksanaKegiatan);
+
+if($stmt->execute()) {
+	header('location:../index.php?posisi=rbp');
+} else {
+	header('location:../index.php?posisi=rbp');
+}

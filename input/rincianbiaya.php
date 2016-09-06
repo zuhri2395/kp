@@ -58,13 +58,13 @@
 
 					<div class="row">
 						<div class="col-md-6 margin-bottom-15">
-							<label for="hariSewaMobil" class="control-label">Jumlah Hari (Sewa Mobil)</label>
+							<label for="hariSewa" class="control-label">Jumlah Hari (Sewa Mobil)</label>
 							<input type="text" name="hariSewaMobil" id="hariSewaMobil" class="form-control" placeholder="Jumlah Hari (Sewa Mobil)" required>
 						</div>
 
 						<div class="col-md-6 margin-bottom-15">
-							<label for="biayaSewaMobil" class="control-label">Biaya per Hari (Sewa Mobil)</label>
-							<input type="text" name="biayaSewaMobil" id="biayaSewaMobil" class="form-control" placeholder="Biaya per Hari (Sewa Mobil)" required>
+							<label for="biayaSewa" class="control-label">Biaya per Hari (Sewa Mobil)</label>
+							<input type="text" name="biayaSewa" id="biayaSewa" class="form-control" placeholder="Biaya per Hari (Sewa Mobil)" required>
 						</div>
 					</div>
 
@@ -138,7 +138,7 @@
 							<input type="reset" name="reset" value="Reset" class="btn btn-default">
 						</div>
 					</div>
-					
+
 				</form>
 			</div>
 		</div>
