@@ -98,6 +98,9 @@
     </div><!--/.navbar-collapse -->
 
     <?php
+      include_once 'includes/koneksi.php';
+      include_once 'includes/function.php';
+
       if(!isset($_GET['posisi'])) {
         require_once 'overview.php';
       }

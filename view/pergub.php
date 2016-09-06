@@ -26,9 +26,6 @@
 						</thead>
 						<tbody>
 							<?php
-							include_once 'includes/koneksi.php';
-							include_once 'includes/function.php';
-							
 							$result = getPergub();
 							while($row = $result->fetch_object()) {
 								echo "<tr>";

@@ -30,9 +30,6 @@
 						</thead>
 						<tbody>
 						<?php
-							include_once 'includes/koneksi.php';
-							include_once 'includes/function.php';
-							
 							$result = getSPT();
 							while($row = $result->fetch_object()) {
 								$decodeNIP = json_decode($row->nip);

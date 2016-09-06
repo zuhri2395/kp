@@ -30,9 +30,6 @@
 						</thead>
 						<tbody>
 							<?php
-							include_once 'includes/koneksi.php';
-							include_once 'includes/function.php';
-
 							$sppd = getSPPD();
 							while($row = $sppd->fetch_object()) {
 								@$sql = "SELECT tanggalDinas FROM spt WHERE noSPT='$row->noSPT'";

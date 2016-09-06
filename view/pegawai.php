@@ -28,10 +28,6 @@
 						</thead>
 						<tbody>
 						<?php
-							include_once 'includes/koneksi.php';
-							include_once 'includes/function.php';
-							
-							$sql = "SELECT * FROM pegawai";
 							$result = getPegawai();
 							while($row = $result->fetch_object()) {
 								echo "<tr>";

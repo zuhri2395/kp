@@ -24,9 +24,6 @@
 						</thead>
 						<tbody>
 							<?php
-							include_once 'includes/koneksi.php';
-							include_once 'includes/function.php';
-
 							$result = getRekening();
 							while($row = $result->fetch_object()) {
 								echo "<tr>";
