@@ -59,7 +59,7 @@
 					<div class="row">
 						<div class="col-md-6 margin-bottom-15">
 							<label for="hariSewa" class="control-label">Jumlah Hari (Sewa Mobil)</label>
-							<input type="text" name="hariSewaMobil" id="hariSewaMobil" class="form-control" placeholder="Jumlah Hari (Sewa Mobil)" required>
+							<input type="text" name="hariSewa" id="hariSewa" class="form-control" placeholder="Jumlah Hari (Sewa Mobil)" required>
 						</div>
 
 						<div class="col-md-6 margin-bottom-15">

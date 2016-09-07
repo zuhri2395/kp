@@ -18,10 +18,13 @@
 						<thead>
 							<tr>
 								<th class="text-center">No SPPD</th>
-								<th class="text-center">Bendahara Pengeluaran</th>
+								<th class="text-center">Uang Harian</th>
+								<th class="text-center">Biaya Transportasi</th>
+								<th class="text-center">Biaya Penginapan</th>
+								<!-- <th class="text-center">Bendahara Pengeluaran</th> -->
 								<th class="text-center">Penerima</th>
 								<th class="text-center">Kuasa Anggaran</th>
-								<th class="text-center">Pelaksana Kegiatan</th
+								<th class="text-center">Pelaksana Kegiatan</th>
 								<th class="text-center">Aksi</th>
 							</tr>
 						</thead>
@@ -31,10 +34,13 @@
 							while($row = $rbp->fetch_object()) {
 								echo "<tr>";
 								echo "<td>" . $row->noSPPD . "</td>";
-								echo "<td>" . retrieve($row->bendaharaPengeluaran, "nama")->nama . "</td>";
-								echo "<td>" . retrieve($row->penerima, "nama")->nama . "</td>";
-								echo "<td>" . retrieve($row->kuasaAnggaran, "nama")->nama . "</td>";
-								echo "<td>" . retrieve($row->pelaksanaAnggaran, "nama")->nama . "</td>";
+								echo "<td>" . $row->hariUangHarian . " x " . $row->biayaUangHarian . "</td>";
+								echo "<td>" . $row->biayaTransport . "</td>";
+								echo "<td>" . $row->biayaPenginapan . "</td>";
+								// echo "<td>" . retrievePegawai($row->bendaharaPengeluaran, "nama")->nama . "</td>";
+								echo "<td>" . retrievePegawai($row->penerima, "nama")->nama . "</td>";
+								echo "<td>" . retrievePegawai($row->kuasaAnggaran, "nama")->nama . "</td>";
+								echo "<td>" . retrievePegawai($row->pelaksanaKegiatan, "nama")->nama . "</td>";
 								echo "<td>";
 								echo "<div class='btn-group'>";
 								echo "<button type='button' class='btn btn-info dropdown-toggle' data-toggle='dropdown'>Aksi ";

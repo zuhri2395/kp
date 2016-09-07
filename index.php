@@ -137,7 +137,7 @@
         require_once 'view/rincianbiaya.php';
       } else if(($_GET['posisi'] == "rincianbiaya") && ($_GET['type'] == "insert")) {
         require_once 'input/rincianbiaya.php';
-      } else if(($_GET['posisi'] == "rincianbiaya") && ($_GET['type'] == "edit") && (isset($_GET['norincian']))) {
+      } else if(($_GET['posisi'] == "rincianbiaya") && ($_GET['type'] == "edit") && (isset($_GET['no']))) {
         require_once 'edit/rincianbiaya.php';
       }
 

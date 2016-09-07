@@ -67,7 +67,7 @@ $rbp = $rbp->fetch_object();
 					<div class="row">
 						<div class="col-md-6 margin-bottom-15">
 							<label for="hariSewa" class="control-label">Jumlah Hari (Sewa Mobil)</label>
-							<input type="text" name="hariSewaMobil" id="hariSewaMobil" class="form-control" placeholder="Jumlah Hari (Sewa Mobil)" value="<?= $rbp->hariSewa; ?>" required>
+							<input type="text" name="hariSewa" id="hariSewa" class="form-control" placeholder="Jumlah Hari (Sewa Mobil)" value="<?= $rbp->hariSewa; ?>" required>
 						</div>
 
 						<div class="col-md-6 margin-bottom-15">
@@ -155,16 +155,17 @@ $rbp = $rbp->fetch_object();
 
 <script type="text/javascript">
 	$(document).ready(function() {
+		var sppd = "<?= $rbp->noSPPD; ?>";
+		var bendaharaPengeluaran = "<?= $rbp->bendaharaPengeluaran; ?>";
+		var penerima = "<?= $rbp->penerima; ?>";
+		var kuasaAnggaran = "<?= $rbp->kuasaAnggaran; ?>";
+		var pelaksanaKegiatan = "<?= $rbp->pelaksanaKegiatan; ?>";
+		
 		$('#noSPPD').val(sppd);
 		$('#bendaharaPengeluaran').val(bendaharaPengeluaran);
 		$('#penerima').val(penerima);
 		$('#kuasaAnggaran').val(kuasaAnggaran);
 		$('#pelaksanaKegiatan').val(pelaksanaKegiatan);
 
-		var sppd = "<?= $rbp->noSPPD; ?>";
-		var bendaharaPengeluaran = "<?= $rbp->bendaharaPengeluaran; ?>";
-		var penerima = "<?= $rbp->penerima; ?>";
-		var kuasaAnggaran = "<?= $rbp->kuasaAnggaran; ?>";
-		var pelaksanaKegiatan = "<?= $rbp->pelaksanaKegiatan; ?>";
 	});
 </script>
