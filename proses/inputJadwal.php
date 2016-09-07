@@ -29,13 +29,12 @@ foreach($nip as $list) {
 	}
 
 	if($crash > 0) {
-		// header('location:../index.php?posisi=jadwal&status=gagal');
+		
 	} else {
 		$sql = "INSERT INTO jadwal_dinas(nip, tanggalBerangkat, tanggalBerakhir) VALUES(?, ?, ?)";
 		$prepared = $conn->prepare($sql);
         $prepared->bind_param("sss", $list, $tanggalBerangkat, $tanggalBerakhir);
         $prepared->execute();
-		// header('location:../index.php?posisi=jadwal&status=sukses');
 	}
 }
 
