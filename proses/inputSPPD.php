@@ -11,7 +11,7 @@ $tempatBerangkat = $_POST['tempatBerangkat'];
 $tempatTujuan = $_POST['tempatTujuan'];
 $akun = $_POST['akun'];
 
-$sql = "INSERT INTO sppd VALUES(?,?,?,?,?,?,?,?,?)";
+$sql = "INSERT INTO sppd VALUES(null, ?,?,?,?,?,?,?,?,?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sssssssss", $noSPPD, $noSPT, $kuasaAnggaran, $pelaksanaDinas, $tingkatBiaya, $transportasi, $tempatBerangkat, $tempatTujuan, $akun);
 

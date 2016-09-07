@@ -15,7 +15,7 @@ $penandatanganSPT = $_POST['penandatanganSPT'];
 
 $jsonNIP = json_encode($nip);
 
-$sql = "INSERT INTO spt VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+$sql = "INSERT INTO spt VALUES(null, ?,?,?,?,?,?,?,?,?,?,?)";
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("sssssssssss", $noSPT, $noPergub, $noDPA, $noSPD, $tanggalDinas, $jsonNIP, $keterangan, $tanggalSPT, $kotaSPT, $statusKadin, $penandatanganSPT);
 
