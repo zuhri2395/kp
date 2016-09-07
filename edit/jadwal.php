@@ -68,17 +68,19 @@ $result = $result->fetch_object();
 		$('#tanggalBerakhir').datepicker({
 			minDate: value
 		});
+		$('#tanggalBerakhir').removeAttr('disabled');
+		$('#tanggalBerakhir').attr('required', true);
 	}
 
 	$(document).ready(function() {
+		setMinDate($('#tanggalBerangkat').val());
 		var nip = "<?= $result->nip; ?>";
 		$('#tanggalBerangkat').datepicker({
 				minDate: 0,
 				onSelect: function(selected, evnt) {
 					$('#tanggalBerakhir').datepicker('destroy');
 					setMinDate(selected);
-					$('#tanggalBerakhir').removeAttr('disabled');
-					$('#tanggalBerakhir').attr('required', true);
+					alert(selected);
 				}
 		});
 
