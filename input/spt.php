@@ -65,9 +65,14 @@ $stmt = $conn->query($sql);
 
 					<div class="row">
 						<!-- Nomor SPD -->
-						<div class="col-md-12 margin-bottom-15">
+						<div class="col-md-6 margin-bottom-15">
 							<label for="noSPD" class="control-label">No SPD</label>
 							<input type="text" class="form-control" id="noSPD" name="noSPD" placeholder="Nomor SPD" required>
+						</div>
+
+						<div class="col-md-6 margin-bottom-15">
+							<label for="tanggalSPD" class="control-label">Tanggal SPD</label>
+							<input type="text" class="form-control tanggal readonly" id="tanggalSPD" name="tanggalSPD" placeholder="Tanggal Nomor SPD" required>
 						</div>
 					</div>
 
@@ -238,24 +243,30 @@ $(document).ready(function() {
 
 	$('#tanggalDinas').on("change", function() {
 		var value = $(this).val();
-		value = value.split("-");
-		var tanggalBerangkat = value[0];
-		var tanggalBerakhir = value[1];
-		pegawai = tanggal[tanggalBerangkat][tanggalBerakhir];
-		var count = size(pegawai);
-		$('#jumlahPegawai').empty();
-		$('#jumlahPegawai').append("<option value=''>Pilih Jumlah Pegawai</option>");
-		for(var i = 1; i <= count; i++) {
-			if(count > 5) {
-				break;
-			} else {
-				$('#jumlahPegawai').append("<option value='" + i + "'>" + i + "</option");
-			}
-		};
+		if(value == "") {
+			$('#jumlahPegawai').val("");
+			$('#jumlahPegawai').attr("disabled", true);
+			$('#jumlahPegawai').trigger("change");
+		} else {
+			value = value.split("-");
+			var tanggalBerangkat = value[0];
+			var tanggalBerakhir = value[1];
+			pegawai = tanggal[tanggalBerangkat][tanggalBerakhir];
+			var count = size(pegawai);
+			$('#jumlahPegawai').empty();
+			$('#jumlahPegawai').append("<option value=''>Pilih Jumlah Pegawai</option>");
+			for(var i = 1; i <= count; i++) {
+				if(count > 5) {
+					break;
+				} else {
+					$('#jumlahPegawai').append("<option value='" + i + "'>" + i + "</option");
+				}
+			};
 
-		$('#jumlahPegawai').val("");
-		$('#jumlahPegawai').removeAttr("disabled");
-		$('#jumlahPegawai').trigger("change");
+			$('#jumlahPegawai').val("");
+			$('#jumlahPegawai').removeAttr("disabled");
+			$('#jumlahPegawai').trigger("change");
+		}
 	});
 
 	$('#jumlahPegawai').on("change", function() {

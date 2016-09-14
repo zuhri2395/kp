@@ -1,5 +1,26 @@
 <?php
 
+function terbilang($x)
+{
+  $ambil = array("", "satu", "dua", "tiga", "empat", "lima", "enam", "tujuh", "delapan", "sembilan", "sepuluh", "sebelas");
+  if ($x < 12)
+    return " " . $ambil[$x];
+  elseif ($x < 20)
+    return terbilang($x - 10) . " belas";
+  elseif ($x < 100)
+    return terbilang($x / 10) . " puluh" . terbilang($x % 10);
+  elseif ($x < 200)
+    return " seratus" . terbilang($x - 100);
+  elseif ($x < 1000)
+    return terbilang($x / 100) . " ratus" . terbilang($x % 100);
+  elseif ($x < 2000)
+    return " seribu" . terbilang($x - 1000);
+  elseif ($x < 1000000)
+    return terbilang($x / 1000) . " ribu" . terbilang($x % 1000);
+  elseif ($x < 1000000000)
+    return terbilang($x / 1000000) . " juta" . terbilang($x % 1000000);
+}
+
 function convertMonth($input, $type = "0") {
 	$months = array("January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December");
 	$bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
@@ -102,6 +123,46 @@ function retrievePegawai($nip, $select = "*") {
 	$select = $conn->real_escape_string($select);
 
 	$sql = "SELECT ". $select . " FROM pegawai WHERE nip='$nip'";
+	$result = $conn->query($sql);
+	$result = $result->fetch_object();
+	return $result;
+}
+
+function retrievePergub($no, $select = "*") {
+	global $conn;
+	$select = $conn->real_escape_string($select);
+
+	$sql = "SELECT ". $select . " FROM pergub WHERE noPergub='$no'";
+	$result = $conn->query($sql);
+	$result = $result->fetch_object();
+	return $result;
+}
+
+function retrieveDPA($noDPA, $select = "*") {
+	global $conn;
+	$select = $conn->real_escape_string($select);
+
+	$sql = "SELECT ". $select . " FROM dpa WHERE noDPA='$noDPA'";
+	$result = $conn->query($sql);
+	$result = $result->fetch_object();
+	return $result;
+}
+
+function retrieveSPT($noSPT, $select = "*") {
+	global $conn;
+	$select = $conn->real_escape_string($select);
+
+	$sql = "SELECT ". $select . " FROM spt WHERE noSPT='$noSPT'";
+	$result = $conn->query($sql);
+	$result = $result->fetch_object();
+	return $result;
+}
+
+function retrieveSPPD($noSPPD, $select = "*") {
+	global $conn;
+	$select = $conn->real_escape_string($select);
+
+	$sql = "SELECT ". $select . " FROM sppd WHERE noSPPD='$noSPPD'";
 	$result = $conn->query($sql);
 	$result = $result->fetch_object();
 	return $result;

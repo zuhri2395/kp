@@ -60,13 +60,26 @@
 								echo "<span class='sr-only'>Toggle Dropdown</span>";
 								echo "</button>";
 								echo "<ul class='dropdown-menu' roles='menu'>";
+
+								//View
+								echo "<li>";
+								echo "<form action='pdf/spt.php' method='POST'>";
+								echo "<input type='hidden' name='noSPT' value='" . $row->noSPT . "'/>";
+								echo "<button class='tombol-drop' type='submit'>View</button>";
+								echo "</form>";
+								echo "</li>";
+
+								//Edit
 								echo "<li><a href='index.php?posisi=spt&type=edit&noSPT=" . $row->noSPT . "'>Edit</a></li>";
+
+								//Delete
 								echo "<li>";
 								echo "<form action='proses/deleteSPT.php' method='POST'>";
 								echo "<input type='hidden' name='noSPT' value='" . $row->noSPT . "'/>";
 								echo "<button class='tombol-drop' type='submit'>Delete</button>";
 								echo "</form>";
 								echo "</li>";
+								
 								echo "</ul>";
 								echo "</div>";
 								echo "</tr>";

@@ -71,9 +71,14 @@ $stmt = $conn->query($sql);
 
 					<div class="row">
 						<!-- Nomor SPD -->
-						<div class="col-md-12 margin-bottom-15">
+						<div class="col-md-6 margin-bottom-15">
 							<label for="noSPD" class="control-label">No SPD</label>
 							<input type="text" class="form-control" id="noSPD" name="noSPD" placeholder="Nomor SPD" value="<?= $spt->noSPD; ?>" required>
+						</div>
+
+						<div class="col-md-6 margin-bottom-15">
+							<label for="tanggalSPD" class="control-label">Tanggal SPD</label>
+							<input type="text" class="form-control tanggal readonly>" id="tanggalSPD" name="tanggalSPD" placeholder="Tanggal Nomor SPD" value="<?= $spt->tanggalSPD; ?>" required>
 						</div>
 					</div>
 

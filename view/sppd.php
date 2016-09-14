@@ -53,13 +53,26 @@
 								echo "<span class='sr-only'>Toggle Dropdown</span>";
 								echo "</button>";
 								echo "<ul class='dropdown-menu' roles='menu'>";
+
+								//View
+								echo "<li>";
+								echo "<form action='pdf/sppd.php' method='POST'>";
+								echo "<input type='hidden' name='noSPPD' value='" . $row->noSPPD . "'/>";
+								echo "<button class='tombol-drop' type='submit'>View</button>";
+								echo "</form>";
+								echo "</li>";
+
+								//EDIT
 								echo "<li><a href='index.php?posisi=sppd&type=edit&noSPPD=" . $row->noSPPD . "'>Edit</a></li>";
+
+								//DELETE
 								echo "<li>";
 								echo "<form action='proses/deleteSPPD.php' method='POST'>";
 								echo "<input type='hidden' name='noSPPD' value='" . $row->noSPPD . "'/>";
 								echo "<button class='tombol-drop' type='submit'>Delete</button>";
 								echo "</form>";
 								echo "</li>";
+
 								echo "</ul>";
 								echo "</div>";
 								echo "</tr>";
