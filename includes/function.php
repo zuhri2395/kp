@@ -118,6 +118,15 @@ function getRBP($select = "*") {
 	return $result;
 }
 
+function getSBP($select = "*") {
+	global $conn;
+	$select = $conn->real_escape_string($select);
+
+	$sql = "SELECT " . $select . " FROM buktipengeluaran";
+	$result = $conn->query($sql);
+	return $result;
+}
+
 function retrievePegawai($nip, $select = "*") {
 	global $conn;
 	$select = $conn->real_escape_string($select);
@@ -163,6 +172,26 @@ function retrieveSPPD($noSPPD, $select = "*") {
 	$select = $conn->real_escape_string($select);
 
 	$sql = "SELECT ". $select . " FROM sppd WHERE noSPPD='$noSPPD'";
+	$result = $conn->query($sql);
+	$result = $result->fetch_object();
+	return $result;
+}
+
+function retrieveRBP($no, $select = "*") {
+	global $conn;
+	$select = $conn->real_escape_string($select);
+
+	$sql = "SELECT ". $select . " FROM rincian WHERE no='$no'";
+	$result = $conn->query($sql);
+	$result = $result->fetch_object();
+	return $result;
+}
+
+function retrieveSBP($noSBP, $select = "*") {
+	global $conn;
+	$select = $conn->real_escape_string($select);
+
+	$sql = "SELECT ". $select . " FROM buktipengeluaran WHERE noSBP='$noBP'";
 	$result = $conn->query($sql);
 	$result = $result->fetch_object();
 	return $result;

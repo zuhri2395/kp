@@ -146,7 +146,7 @@
         require_once 'view/buktipengeluaran.php';
       } else if(($_GET['posisi'] == "buktipengeluaran") && ($_GET['type'] == "insert")) {
         require_once 'input/buktipengeluaran.php';
-      } else if(($_GET['posisi'] == "buktipengeluaran") && ($_GET['type'] == "edit") && (isset($_GET['nobuktipengeluaran']))) {
+      } else if(($_GET['posisi'] == "buktipengeluaran") && ($_GET['type'] == "edit") && (isset($_GET['noSBP']))) {
         require_once 'edit/buktipengeluaran.php';
       }
 

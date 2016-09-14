@@ -4,7 +4,7 @@ require('../fpdf/fpdf.php');
 include '../includes/koneksi.php';
 include '../includes/function.php';
 
-$no = $_GET['no'];
+$no = $_POST['no'];
 $query = $conn->query("SELECT * FROM rincian WHERE no='$no'");
 $rincian = $query->fetch_object();
 $jmlh_harian = $rincian->hariUangHarian * $rincian->biayaUangHarian;

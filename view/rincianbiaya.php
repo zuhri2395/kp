@@ -21,7 +21,7 @@
 								<th class="text-center">Uang Harian</th>
 								<th class="text-center">Biaya Transportasi</th>
 								<th class="text-center">Biaya Penginapan</th>
-								<!-- <th class="text-center">Bendahara Pengeluaran</th> -->
+								<th class="text-center">Bendahara</th>
 								<th class="text-center">Penerima</th>
 								<th class="text-center">Kuasa Anggaran</th>
 								<th class="text-center">Pelaksana Kegiatan</th>
@@ -37,7 +37,7 @@
 								echo "<td>" . $row->hariUangHarian . " x " . $row->biayaUangHarian . "</td>";
 								echo "<td>" . $row->biayaTransport . "</td>";
 								echo "<td>" . $row->biayaPenginapan . "</td>";
-								// echo "<td>" . retrievePegawai($row->bendaharaPengeluaran, "nama")->nama . "</td>";
+								echo "<td>" . retrievePegawai($row->bendaharaPengeluaran, "nama")->nama . "</td>";
 								echo "<td>" . retrievePegawai($row->penerima, "nama")->nama . "</td>";
 								echo "<td>" . retrievePegawai($row->kuasaAnggaran, "nama")->nama . "</td>";
 								echo "<td>" . retrievePegawai($row->pelaksanaKegiatan, "nama")->nama . "</td>";
@@ -48,13 +48,26 @@
 								echo "<span class='sr-only'>Toggle Dropdown</span>";
 								echo "</button>";
 								echo "<ul class='dropdown-menu' roles='menu'>";
+
+								//VIEW
+								echo "<li>";
+								echo "<form action='pdf/rbp.php' method='POST'>";
+								echo "<input type='hidden' name='no' value='" . $row->no . "'/>";
+								echo "<button class='tombol-drop' type='submit'>View</button>";
+								echo "</form>";
+								echo "</li>";
+
+								//EDIT
 								echo "<li><a href='index.php?posisi=rincianbiaya&type=edit&no=" . $row->no . "'>Edit</a></li>";
+
+								//DELETE
 								echo "<li>";
 								echo "<form action='proses/deleteRBP.php' method='POST'>";
 								echo "<input type='hidden' name='no' value='" . $row->no . "'/>";
 								echo "<button class='tombol-drop' type='submit'>Delete</button>";
 								echo "</form>";
 								echo "</li>";
+
 								echo "</ul>";
 								echo "</div>";
 								echo "</tr>";
