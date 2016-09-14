@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+if(!isset($_SESSION['username']) && !isset($_SESSION['login']))  {
+  header('location:login.php');
+}
+
+?>
 <!DOCTYPE html>
 <head>
     <meta charset="utf-8">
@@ -90,8 +98,8 @@
                     <li><a href="index.php?posisi=rekening">Rekening</a></li>
                 </ul>
             </li>
-            <li id="users"><a href="tables.html"><i class="fa fa-users"></i>Manage Users</a></li>
-            <li id="pref"><a href="preferences.html"><i class="fa fa-cog"></i>Preferences</a></li>
+            <!-- <li id="users"><a href="tables.html"><i class="fa fa-users"></i>Manage Users</a></li>
+            <li id="pref"><a href="preferences.html"><i class="fa fa-cog"></i>Preferences</a></li> -->
             <li><a href="#" data-toggle="modal" data-target="#confirmModal"><i class="fa fa-sign-out"></i>Sign Out</a>
             </li>
         </ul>

@@ -1,24 +1,9 @@
 <?php
-include_once 'includes/koneksi.php';
+session_start();
 
-if(isset($_SESSION['username']) && isset($_SESSION['login'])) {
-
-} else if(isset($_POST['submit']) && isset($_POST['username']) && isset($_POST['password'])) {
-  $username = $_POST['username'];
-  $password = $_POST['password'];
-
-  $query = "SELECT * FROM user where username='$username' AND password='$password'";
-  $result = $conn->query($query);
-  $num = $result->num_rows;
-
-  if($num) {
-    $_SESSION['username'] = $username;
-    $_SESSION['login'] = true;
-  } else {
-    header('location:login.php');
-  }
-} else {
-
+if(isset($_SESSION['login']) && $_SESSION['login'] == true) {
+  header('location:index.php');
+}
 ?>
 <!DOCTYPE html>
 <head>
@@ -36,7 +21,7 @@ if(isset($_SESSION['username']) && isset($_SESSION['login'])) {
     </div>
   </div>
   <div class="template-page-wrapper">
-    <form class="form-horizontal templatemo-signin-form" role="form" action="login.php" method="POST">
+    <form class="form-horizontal templatemo-signin-form" role="form" action="proses/login.php" method="POST">
       <div class="form-group">
         <div class="col-md-12">
           <label for="username" class="col-sm-2 control-label">Username</label>
@@ -76,4 +61,3 @@ if(isset($_SESSION['username']) && isset($_SESSION['login'])) {
 </div>
 </body>
 </html>
-<?php } ?>
