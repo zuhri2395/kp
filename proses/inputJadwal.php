@@ -1,10 +1,12 @@
 <?php
 include_once '../includes/koneksi.php';
 include '../includes/function.php';
+session_start();
 
 $nip = $_POST['nip'];
 $tanggalBerangkat = $_POST['tanggalBerangkat'];
 $tanggalBerakhir = $_POST['tanggalBerakhir'];
+$pegawaiCrash = array();
 
 foreach($nip as $list) {
 	$sql = "SELECT * FROM jadwal_dinas WHERE nip='$list'";
@@ -21,10 +23,13 @@ foreach($nip as $list) {
 
 		if(($inpBerangkat == $dbBerangkat) || ($inpBerangkat == $dbPulang) || ($inpPulang == $dbPulang) || ($inpPulang == $dbBerangkat )) {
 			$crash++;
+			array_push($pegawaiCrash, $list);
 		} else if(($inpBerangkat > $dbBerangkat) && ($inpBerangkat < $dbPulang)) {
 			$crash++;
+			array_push($pegawaiCrash, $list);
 		} else if(($inpPulang > $dbBerangkat) && ($inpPulang < $dbPulang)) {
 			$crash++;
+			array_push($pegawaiCrash, $list);
 		}
 	}
 
@@ -37,5 +42,6 @@ foreach($nip as $list) {
         $prepared->execute();
 	}
 }
-
+$_SESSION['crash'] = $pegawaiCrash;
+$_SESSION['assign'] = $tanggalBerangkat . " - " . $tanggalBerakhir;
 header('location:../index.php?posisi=jadwal');

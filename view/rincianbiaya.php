@@ -30,15 +30,16 @@
 						</thead>
 						<tbody>
 							<?php
-							$rbp = getRBP();
+							$rbp = getRBP("desc");
 							while($row = $rbp->fetch_object()) {
+								$sppd = retrieveSPPD($row->noSPPD);
 								echo "<tr>";
 								echo "<td>" . $row->noSPPD . "</td>";
 								echo "<td>" . $row->hariUangHarian . " x " . $row->biayaUangHarian . "</td>";
 								echo "<td>" . $row->biayaTransport . "</td>";
 								echo "<td>" . $row->biayaPenginapan . "</td>";
 								echo "<td>" . retrievePegawai($row->bendaharaPengeluaran, "nama")->nama . "</td>";
-								echo "<td>" . retrievePegawai($row->penerima, "nama")->nama . "</td>";
+								echo "<td>" . retrievePegawai($sppd->pelaksanaDinas)->nama . "</td>";
 								echo "<td>" . retrievePegawai($row->kuasaAnggaran, "nama")->nama . "</td>";
 								echo "<td>" . retrievePegawai($row->pelaksanaKegiatan, "nama")->nama . "</td>";
 								echo "<td>";

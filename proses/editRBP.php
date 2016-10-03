@@ -19,7 +19,7 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("ssssssssssss", $noSPPD, $hariUangHarian, $biayaUangHarian, $biayaTransport, $biayaPenginapan, $hariSewa, $biayaSewa, $bendaharaPengeluaran, $penerima, $kuasaAnggaran, $pelaksanaKegiatan, $no);
 
 if($stmt->execute()) {
-	header('location:../index.php?posisi=rbp');
+	header('location:../index.php?posisi=rincianbiaya');
 } else {
-	header('location:../index.php?posisi=rbp');
+	header('location:../index.php?posisi=rincianbiaya');
 }

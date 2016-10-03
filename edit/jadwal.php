@@ -76,7 +76,6 @@ $result = $result->fetch_object();
 		setMinDate($('#tanggalBerangkat').val());
 		var nip = "<?= $result->nip; ?>";
 		$('#tanggalBerangkat').datepicker({
-				minDate: 0,
 				onSelect: function(selected, evnt) {
 					$('#tanggalBerakhir').datepicker('destroy');
 					setMinDate(selected);

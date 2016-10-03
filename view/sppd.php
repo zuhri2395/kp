@@ -30,7 +30,7 @@
 						</thead>
 						<tbody>
 							<?php
-							$sppd = getSPPD();
+							$sppd = getSPPD("desc");
 							while($row = $sppd->fetch_object()) {
 								@$sql = "SELECT tanggalDinas FROM spt WHERE noSPT='$row->noSPT'";
 								@$tgl = $conn->query($sql);
@@ -54,11 +54,18 @@
 								echo "</button>";
 								echo "<ul class='dropdown-menu' roles='menu'>";
 
-								//View
+								//View Depan
 								echo "<li>";
-								echo "<form action='pdf/sppd.php' method='POST'>";
+								echo "<form action='pdf/sppd.php' method='POST' target='_blank'>";
 								echo "<input type='hidden' name='noSPPD' value='" . $row->noSPPD . "'/>";
-								echo "<button class='tombol-drop' type='submit'>View</button>";
+								echo "<button class='tombol-drop' type='submit'>Depan</button>";
+								echo "</form>";
+								echo "</li>";
+
+								//View Depan
+								echo "<li>";
+								echo "<form action='pdf/sppdb.pdf' method='POST' target='_blank'>";
+								echo "<button class='tombol-drop' type='submit'>Belakang</button>";
 								echo "</form>";
 								echo "</li>";
 

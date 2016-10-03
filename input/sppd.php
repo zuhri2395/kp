@@ -31,7 +31,7 @@ include_once("includes/function.php");
 							<select class="form-control" id="noSPT" name="noSPT" required>
 								<option value="">Pilih No SPT</option>
 								<?php
-									$spt = getSPT("noSPT");
+									$spt = getSPT("noSPT, nip");
 									while($row = $spt->fetch_object()) {
 										echo "<option value='" . $row->noSPT . "'>" . $row->noSPT . "</option>";
 									}

@@ -1,3 +1,7 @@
+<?php
+
+$crash = (isset($_SESSION['crash']) ? $_SESSION['crash'] : null);
+?>
 <div class="templatemo-content-wrapper">
 	<div class="templatemo-content">
 		<ol class="breadcrumb">
@@ -9,11 +13,47 @@
 		<h1 class="margin-bottom-15">
 			<b>Jadwal Dinas</b>
 		</h1>
+<!-- 
+		<div class="row">
+			<div class="col-md-12">
+				<h4 class="margin-bottom-15">Rekap Penjadwalan Pegawai</h4>
+				<select class="form-control">
+					<option value=""></option>
+				</select>
+			</div>
+		</div> -->
+
+		<?php
+			if($crash != null) {
+				echo "<div class='row'>";
+				echo "<div class='col-md-12'>";
+				echo "<h4 class='margin-bottom-15'>Pegawai dibawah ini pada penjadwalan tanggal " . $_SESSION['assign'] . " bentrok dengan penjadwalan ditanggal lain</h4>";
+				echo "<div class='col-md-6 table-responsive'>";
+				echo "<table class='table table-striped table-hover table-bordered'>";
+				echo "<tr>";
+				echo "<td>No</td>";
+				echo "<td>Nama</td>";
+				echo "</tr>";
+				$no = 1;
+				foreach($crash as $nipPegawai) {
+					$namaPegawai = retrievePegawai($nipPegawai, "nama")->nama;
+					echo "<tr>";
+					echo "<td>" . $no++ . "</td>";
+					echo "<td>" . $namaPegawai . "</td>";
+					echo "</tr>";
+				}
+				echo "</table>";
+				echo "</div>";
+				echo "</div>";
+				echo "</div>";
+				unset($_SESSION['crash']);
+			}
+		?>
 
 		<div class="row">
 			<div class="col-md-12">
 				<div class="table-responsive">
-					<h4 class="margin-bottom-15">Daftar Surat Perintah Tugas</h4>
+					<h4 class="margin-bottom-15">Daftar Penjadwalan Tugas</h4>
 					<table class="table table-striped table-hover table-bordered">
 						<thead>
 							<tr>

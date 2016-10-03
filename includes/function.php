@@ -91,38 +91,54 @@ function getJadwal($select = "*") {
 	return $result;
 }
 
-function getSPT($select = "*") {
+function getSPT($sort = "asc", $select = "*") {
 	global $conn;
 	$select = $conn->real_escape_string($select);
 
-	$sql = "SELECT " . $select . " FROM spt";
+	if($sort = "desc") {
+		$sql = "SELECT " . $select . " FROM spt ORDER BY no DESC";
+	} else {
+		$sql = "SELECT " . $select . " FROM spt ORDER BY no ASC";
+	}
 	$result = $conn->query($sql);
 	return $result;
 }
 
-function getSPPD($select = "*") {
+function getSPPD($sort = "asc", $select = "*") {
 	global $conn;
 	$select = $conn->real_escape_string($select);
 
-	$sql = "SELECT " . $select . " FROM sppd";
+	if($sort = "desc") {
+		$sql = "SELECT " . $select . " FROM sppd ORDER BY no DESC";
+	} else {
+		$sql = "SELECT " . $select . " FROM sppd ORDER BY no ASC";
+	}
 	$result = $conn->query($sql);
 	return $result;
 }
 
-function getRBP($select = "*") {
+function getRBP($sort = "asc", $select = "*") {
 	global $conn;
 	$select = $conn->real_escape_string($select);
 
-	$sql = "SELECT " . $select . " FROM rincian";
+	if($sort = "desc") {
+		$sql = "SELECT " . $select . " FROM rincian ORDER BY no DESC";
+	} else {
+		$sql = "SELECT " . $select . " FROM rincian ORDER BY no ASC";
+	}
 	$result = $conn->query($sql);
 	return $result;
 }
 
-function getSBP($select = "*") {
+function getSBP($sort = "asc", $select = "*") {
 	global $conn;
 	$select = $conn->real_escape_string($select);
 
-	$sql = "SELECT " . $select . " FROM buktipengeluaran";
+	if($sort = "desc") {
+		$sql = "SELECT " . $select . " FROM buktipengeluaran ORDER BY no DESC";
+	} else {
+		$sql = "SELECT " . $select . " FROM buktipengeluaran ORDER BY no ASC";
+	}
 	$result = $conn->query($sql);
 	return $result;
 }

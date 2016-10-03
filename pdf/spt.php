@@ -46,17 +46,17 @@ function Footer()
 $pdf = new PDF();
 $pdf->AliasNbPages();
 $pdf->AddPage();
-$pdf->Image('pict/header2.jpg',5,6,200,30);
-$pdf->Ln(10);
-$pdf->SetFont('Times','BU',10);
+$pdf->Image('pict/header3.jpg',0,0,200,40);
+$pdf->Ln(18);
+$pdf->SetFont('Times','BU',12);
 $pdf->Cell(0,40,'SURAT PERINTAH TUGAS',0,1,'C');
-$pdf->SetFont('Times','',10);
-$pdf->Cell(190,-30,'Nomor :'.$spt->noSPT.'',0,1,'C');
+$pdf->SetFont('Times','',12);
+$pdf->Cell(170,-30,'Nomor :',0,1,'C');
 $pdf->Ln(22);
-$pdf->SetFont('Times','B',10);
+$pdf->SetFont('Times','B',12);
 $pdf->Cell(0,0,'Berdasarkan : ',0,1,'L');
 $pdf->Ln(3);
-$pdf->SetFont('Times','',10);
+$pdf->SetFont('Times','',12);
 $pdf->SetX(20);
 $pdf->Cell(5,5,'1. ',0,'L');
 $pdf->MultiCell(0,6,'Peraturan Gubernur Jawa Tengah Nomor : '.$spt->noPergub. ' Tahun '. retrievePergub($spt->noPergub)->tahun . ' Tanggal '.retrievePergub($spt->noPergub)->tanggal.' tentang '.
@@ -71,20 +71,20 @@ $pdf->SetX(20);
 $pdf->Cell(5,5,'4. ',0,0,'L');
 $pdf->MultiCell(0,6,'Untuk Kepentingan Dinas.',0,'L');
 $pdf->Ln(5);
-$pdf->SetFont('Times','BU',10);
+$pdf->SetFont('Times','BU',12);
 $pdf->Cell(0,0,'MEMERINTAHKAN :',0,0,'C');
 $pdf->Ln(5);
-$pdf->SetFont('Times','B',10);
+$pdf->SetFont('Times','B',12);
 $pdf->Cell(0,0,'Kepada : ',0,1,'L');
 $pdf->Ln(5);
 $j = 1;
 foreach($nip as $pegawai) {
   $data = retrievePegawai($pegawai);
-  $pdf->SetFont('Times', '', '10');
+  $pdf->SetFont('Times', '', '12');
   $pdf->Ln(1);
   $pdf->setX(20);
   $pdf->Cell(5,5, $j++ . '.', 0, 'L');
-  $pdf->Cell(0,6,'Nama / NIP    :'.$data->nama.'',0,1,'L');
+  $pdf->Cell(0,6,'Nama / NIP    : '.$data->nama.'',0,1,'L');
   $pdf->SetX(25);
   $pdf->Cell(0,6,'Pangkat / Gol : '.$data->pangkat.'',0,1,'L');
   $pdf->SetX(25);
@@ -92,10 +92,10 @@ foreach($nip as $pegawai) {
 }
 
 $pdf->Ln(4);
-$pdf->SetFont('Times','B',10);
+$pdf->SetFont('Times','B',12);
 $pdf->Cell(0,0,'Untuk : ',0,1,'L');
 $pdf->Ln(5);
-$pdf->SetFont('Times','',10);
+$pdf->SetFont('Times','',12);
 $pdf->SetX(20);
 $pdf->Cell(5,5,'1. ',0,'L');
 $pdf->MultiCell(0,6,$spt->keterangan.' pada tanggal ' . $spt->tanggalDinas . '.',0,'L');
@@ -105,25 +105,34 @@ $pdf->MultiCell(0,6,'Melaporkan Hasil Pelaksanaan Tugas kepada Pejabat Pemberi P
 $pdf->SetX(20);
 $pdf->Cell(5,5,'3. ',0,'L');
 $pdf->MultiCell(0,6,'Demikian Surat Perintah Tugas ini untuk dilaksanakan penuh rasa tanggung jawab.',0,'L');
-$pdf->Ln(5);
+$pdf->Ln(10);
 $pdf->SetLeftMargin(100);
-$pdf->SetFont('Times','',10);
+$pdf->SetFont('Times','',12);
 $pdf->Cell(0,0,'DIKELUARKAN    : '.$spt->kotaSPT.'',0,1,'L');
-$pdf->SetFont('Times','U',10);
+$pdf->SetFont('Times','U',12);
 $pdf->Cell(0,10,'PADA TANGGAL : '.$spt->tanggalSPT.' ',0,1,'L');
 
 $pdf->SetLeftMargin(90);
-$pdf->SetFont('Times','B',10);
-$pdf->Cell(80,5,$stat.'. KEPALA DINAS',0,1,'C');
+$pdf->SetFont('Times','B',12);
+$pdf->Ln(10);
+if($stat == "kepala") {
+  $pdf->Cell(100,5,' KEPALA DINAS',0,1,'C');  
+} else {
+  $pdf->Cell(100,5,$stat.'. KEPALA DINAS',0,1,'C');
+}
+
 /*************************************/
 $pdf->Cell(100,5,'PERHUBUNGAN KOMUNIKASI DAN INFORMATIKA',0,1,'C');
 $pdf->Cell(100,5,'PROVINSI JAWA TENGAH',0,1,'C');
-$pdf->SetFont('Times','',10);
-$pdf->Cell(100,5,retrievePegawai($spt->penandatanganSPT)->jabatan,0,1,'C');
+$pdf->SetFont('Times','',12);
+if($stat != "kepala") {
+  $pdf->Cell(100,5,retrievePegawai($spt->penandatanganSPT)->jabatan,0,1,'C');
+}
+
 $pdf->Ln(10);
-$pdf->SetFont('Times','B',10);
+$pdf->SetFont('Times','BU',12);
 $pdf->Cell(100,5,retrievePegawai($spt->penandatanganSPT)->nama,0,1,'C');
-$pdf->SetFont('Times','',10);
+$pdf->SetFont('Times','',12);
 $pdf->Cell(100,5,retrievePegawai($spt->penandatanganSPT)->pangkat,0,1,'C');
 $pdf->Cell(100,5,$spt->penandatanganSPT,0,1,'C');
 

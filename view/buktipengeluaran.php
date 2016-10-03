@@ -32,7 +32,7 @@
 						</thead>
 						<tbody>
 						<?php
-							$result = getSBP();
+							$result = getSBP("desc");
 							while($row = $result->fetch_object()) {
 								echo "<tr>";
 								echo "<td>" . $row->noSBP . "</td>";

@@ -125,7 +125,6 @@ include_once 'includes/function.php';
 
 	$(document).ready(function() {
 		$('#tanggalBerangkat').datepicker({
-				minDate: 0,
 				onSelect: function(selected, evnt) {
 					$('#tanggalBerakhir').datepicker('destroy');
 					setMinDate(selected);

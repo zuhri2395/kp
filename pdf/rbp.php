@@ -24,11 +24,11 @@ function Header()
 {
     // Logo
     //$this->Image('../pict/header.jpg',5,6,200,40);
-    $this->Image('pict/JATENG_LOGO.jpg',5,8,15,15);
+    $this->Image('pict/JATENG_LOGO.jpg',4,6,15,15);
 	$this->SetFont('Times','B',12);
 	$this->SetLeftMargin(20);
-	$this->Cell(50,5,"PEMERINTAH PROVINSI JAWA TENGAH",0,1,"L");
-	$this->Cell(50,5,"DINAS PERHUBUNGAN KOMUNIKASI DAN INFORMATIKA",0,0,"L");
+	$this->Cell(45,5,"PEMERINTAH PROVINSI JAWA TENGAH",0,1,"L");
+	$this->Cell(45,5,"DINAS PERHUBUNGAN KOMUNIKASI DAN INFORMATIKA",0,0,"L");
 	$this->Ln(10);
     // Arial bold 15
     //$this->SetFont('Arial','B',15);
@@ -112,7 +112,7 @@ $pdf->Cell(199,7,'TERBILANG : '.$terbilang.' rupiah',1,1,'L');
 
 $pdf->SetX(5);
 $pdf->Cell(100,7,'',0,0,'C');
-$pdf->Cell(100,7,$spt->kotaSPT.', '.$spt->tanggalSPT,0,1,'C');
+$pdf->Cell(100,7,$spt->kotaSPT.', ',0,1,'C');
 $pdf->SetX(5);
 $pdf->Cell(100,7,'Telah dibayar sejumlah',0,0,'C');
 $pdf->Cell(100,7,'Telah menerima uang sejumlah',0,1,'C');
@@ -131,7 +131,7 @@ $pdf->Ln(20);
 $pdf->SetX(5);
 $pdf->SetFont('Arial','U',12);
 $pdf->Cell(100,5,'( '.retrievePegawai($rincian->bendaharaPengeluaran)->nama.' )',0,0,'C');
-$pdf->Cell(100,5,'( '.retrievePegawai($rincian->penerima)->nama.' )',0,1,'C');
+$pdf->Cell(100,5,'( '.retrievePegawai($sppd->pelaksanaDinas)->nama.' )',0,1,'C');
 $pdf->SetX(5);
 $pdf->SetFont('Arial','',12);
 $pdf->Cell(100,5,'NIP : '.$rincian->bendaharaPengeluaran.' ',0,0,'C');

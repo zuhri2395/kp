@@ -30,7 +30,7 @@
 						</thead>
 						<tbody>
 						<?php
-							$result = getSPT();
+							$result = getSPT("desc");
 							while($row = $result->fetch_object()) {
 								$decodeNIP = json_decode($row->nip);
 								echo "<tr>";

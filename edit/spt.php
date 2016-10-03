@@ -170,8 +170,8 @@ $stmt = $conn->query($sql);
 							<label for="statusKadin" class="control-label">Status Kepala Dinas</label>
 							<select class="form-control" name="statusKadin" id="statusKadin" required>
 								<option value="">Pilih Status Kepala Dinas</option>
+								<option value="kepala">Kepala Dinas</option>
 								<option value="PLT">PLT</option>
-								<option value="PLH">PLH</option>
 							</select>
 						</div>
 
