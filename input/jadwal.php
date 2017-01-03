@@ -144,8 +144,8 @@ include_once 'includes/function.php';
 
 			for(var j = 4; j > jumlah; j--) {
 				$('#pegawai' + j).hide();
-				$('#pegawai' + i).find('*').attr('disabled', true);
-				$('#pegawai' + i).find('*').attr('required', false);
+				$('#pegawai' + j).find('*').attr('disabled', true);
+				$('#pegawai' + j).find('*').attr('required', false);
 			}
 		});
 	});

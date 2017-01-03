@@ -4,8 +4,8 @@ require('../fpdf/fpdf.php');
 include '../includes/koneksi.php';
 include '../includes/function.php';
 
-// $noSPPD = $_POST['noSPPD'];
-$noSPPD = 145;
+$noSPPD = $_POST['noSPPD'];
+// $noSPPD = 145;
 $query = $conn->query("SELECT * FROM sppd WHERE noSPPD='$noSPPD'");
 $sppd = $query->fetch_object();
 $spt = retrieveSPT($sppd->noSPT);
@@ -81,7 +81,7 @@ c. '.$sppd->tingkatBiaya,1,'L');
 /******** 4 ************/
 $pdf->Cell(5,17,'4. ',1,0,'L');
 $pdf->Cell(100,17,'Maksud Perjalanan Dinas',1,0,'L');
-$pdf->MultiCell(91,19,$spt->keterangan.'',0);
+$pdf->MultiCell(91,19,$spt->keterangan.'',0,'C');
 $pdf->SetXY(115,108);
 $pdf->MultiCell(91,17,'',1);
 /******** 5 ************/
