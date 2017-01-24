@@ -24,10 +24,10 @@ foreach($nip as $list) {
 		if(($inpBerangkat == $dbBerangkat) || ($inpBerangkat == $dbPulang) || ($inpPulang == $dbPulang) || ($inpPulang == $dbBerangkat )) {
 			$crash++;
 			array_push($pegawaiCrash, $list);
-		} else if(($inpBerangkat > $dbBerangkat) || ($inpBerangkat < $dbPulang)) {
+		} else if(($inpBerangkat > $dbBerangkat) && ($inpBerangkat < $dbPulang)) {
 			$crash++;
 			array_push($pegawaiCrash, $list);
-		} else if(($inpPulang > $dbBerangkat) || ($inpPulang < $dbPulang)) {
+		} else if(($inpPulang > $dbBerangkat) && ($inpPulang < $dbPulang)) {
 			$crash++;
 			array_push($pegawaiCrash, $list);
 		}
